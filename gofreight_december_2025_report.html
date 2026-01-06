@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoFreight AEO Performance Report - December 2025 Monthly Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-blue: #01aac1;
+            --accent-blue: #01d7f4;
+            --teal: #017d8e;
+            --dark-gray: #111111;
+            --medium-gray: #333333;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --success-green: #22c55e;
+            --warning-yellow: #eab308;
+            --danger-red: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--dark-gray) 0%, var(--medium-gray) 100%);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--teal) 100%);
+            opacity: 0.3;
+            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .date-range {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Headers */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--teal) 100%);
+            color: var(--white);
+            padding: 15px 25px;
+            border-radius: 12px 12px 0 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-content {
+            background: var(--white);
+            border-radius: 0 0 12px 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .kpi-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary-blue);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px -2px rgba(0,0,0,0.15);
+        }
+
+        .kpi-label {
+            font-size: 0.85rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-gray);
+        }
+
+        .kpi-change {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 8px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .kpi-change.positive {
+            background: #dcfce7;
+            color: var(--success-green);
+        }
+
+        .kpi-change.negative {
+            background: #fee2e2;
+            color: var(--danger-red);
+        }
+
+        .kpi-change.neutral {
+            background: #fef3c7;
+            color: var(--warning-yellow);
+        }
+
+        /* Charts */
+        .chart-container {
+            position: relative;
+            height: 350px;
+            margin: 20px 0;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .chart-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .data-table th {
+            background: var(--medium-gray);
+            color: var(--white);
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+
+        .data-table th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+
+        .data-table th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-table tr:hover td {
+            background: #f8fafc;
+        }
+
+        .data-table .trend-up {
+            color: var(--success-green);
+            font-weight: 600;
+        }
+
+        .data-table .trend-down {
+            color: var(--danger-red);
+            font-weight: 600;
+        }
+
+        .data-table .page-url {
+            max-width: 350px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* Segment Analysis */
+        .segment-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 800px) {
+            .segment-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .segment-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .segment-card.branded {
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .segment-card.branded-related {
+            border-top: 4px solid var(--accent-blue);
+        }
+
+        .segment-card.non-branded {
+            border-top: 4px solid var(--success-green);
+        }
+
+        .segment-title {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .segment-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .segment-detail {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .contribution-bar {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .contribution-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        /* Insights Box */
+        .insight-box {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 4px solid var(--primary-blue);
+            border-radius: 0 12px 12px 0;
+            padding: 20px 25px;
+            margin: 25px 0;
+        }
+
+        .insight-box h4 {
+            color: var(--teal);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .insight-box p {
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        .insight-box ul {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .insight-box li {
+            margin-bottom: 5px;
+            color: #334155;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                max-width: 100%;
+            }
+            .kpi-card, .segment-card, .section-content {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            .chart-container {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>GoFreight AEO Performance Report — December 2025 Monthly Report</h1>
+            <p class="subtitle">Search Visibility & Traffic Analysis</p>
+            <p class="date-range">December 2025 vs November 2025 | Prepared by Novastacks</p>
+        </div>
+
+        <!-- Executive Summary KPIs -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label">Total Clicks</div>
+                <div class="kpi-value">7,308</div>
+                <div class="kpi-change negative">
+                    <span>&#9660;</span> -13.2% vs Nov
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Total Impressions</div>
+                <div class="kpi-value">1.2M</div>
+                <div class="kpi-change positive">
+                    <span>&#9650;</span> +20.0% vs Nov
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Average CTR</div>
+                <div class="kpi-value">0.59%</div>
+                <div class="kpi-change negative">
+                    <span>&#9660;</span> -27.2% vs Nov
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Avg Position</div>
+                <div class="kpi-value">25.2</div>
+                <div class="kpi-change positive">
+                    <span>&#9650;</span> +0.6 positions
+                </div>
+            </div>
+        </div>
+
+        <!-- Executive Summary -->
+        <div class="section">
+            <div class="section-header">
+                <span>&#128220;</span> Executive Summary — December 2025
+            </div>
+            <div class="section-content">
+                <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 25px; border-radius: 12px; margin-bottom: 25px; border-left: 4px solid var(--primary-blue);">
+                    <h3 style="margin-bottom: 15px; color: var(--teal);">Month in Review</h3>
+                    <p style="font-size: 1.05rem; color: #334155; line-height: 1.7;">
+                        December 2025 was a major execution month for GoFreight's AEO program. The team shipped multiple high-impact initiatives: <strong>technical SEO fixes for site architecture errors</strong>, <strong>high-traffic blog articles</strong>, <strong>CargoWise competitive content</strong>, and <strong>new customer case study pages</strong>. HubSpot CMS migration is nearly complete. KPI results show <strong>impressions grew +20% MoM</strong>, validating that technical fixes are having positive impact on organic visibility. However, recent 404 errors on archive.gofreight.com present a ranking risk requiring immediate attention.
+                    </p>
+                </div>
+
+                <h4 style="color: var(--teal); margin-bottom: 15px; font-size: 1.1rem;">Major Initiatives Shipped</h4>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 25px;">
+                    <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; border-left: 3px solid var(--success-green);">
+                        <h5 style="color: #166534; margin-bottom: 10px;">&#9989; Technical SEO & Site Architecture</h5>
+                        <ul style="font-size: 0.9rem; color: #166534; margin-left: 15px; line-height: 1.8;">
+                            <li>Fixed critical site architecture errors impacting crawlability</li>
+                            <li>HubSpot CMS migration nearly complete for blogs and customer stories</li>
+                            <li>Addressed Zendesk subdomain robots.txt issue for improved crawl budget</li>
+                            <li><strong>Result:</strong> +20% impression growth validates technical fixes</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; border-left: 3px solid var(--success-green);">
+                        <h5 style="color: #166534; margin-bottom: 10px;">&#9989; High-Traffic Blog Articles</h5>
+                        <ul style="font-size: 0.9rem; color: #166534; margin-left: 15px; line-height: 1.8;">
+                            <li>Published educational content: DDP, FOB, EXW, CPT, CFR guides</li>
+                            <li>Terminal tracking pages gaining traction (Maher +40%, Garden City stable)</li>
+                            <li>Non-branded impressions +20% MoM from organic discovery</li>
+                            <li>Content targeting "ocean freight software" and "freight forwarding software"</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; border-left: 3px solid var(--success-green);">
+                        <h5 style="color: #166534; margin-bottom: 10px;">&#9989; CargoWise Content Initiative</h5>
+                        <ul style="font-size: 0.9rem; color: #166534; margin-left: 15px; line-height: 1.8;">
+                            <li>Launched "CargoWise Pricing 2025" and "CargoWise vs GoFreight" pillars</li>
+                            <li>Created 10+ bottom-of-funnel articles for switcher pain points</li>
+                            <li>Identified 3 key differentiators: 24-hr support, 1-month onboarding, transparent pricing</li>
+                            <li>Captured 5+ large inbound leads ($100K+ deals) from price hike publicity</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: #f0fdf4; padding: 20px; border-radius: 10px; border-left: 3px solid var(--success-green);">
+                        <h5 style="color: #166534; margin-bottom: 10px;">&#9989; Customer Case Study Pages</h5>
+                        <ul style="font-size: 0.9rem; color: #166534; margin-left: 15px; line-height: 1.8;">
+                            <li>Shipped 4 new /customers pages: TG Cargo, GC Logistics, CSL, Whale US</li>
+                            <li>All pages indexed and generating impressions within weeks of launch</li>
+                            <li>+518 new impressions from customer stories in December</li>
+                            <li>Establishes foundation for enterprise case study content cluster</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- KPI Outcome Analysis -->
+                <h4 style="color: var(--teal); margin-bottom: 15px; font-size: 1.1rem;">KPI Outcome Analysis</h4>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin-bottom: 25px;">
+                    <div style="background: #dcfce7; padding: 20px; border-radius: 8px; border: 1px solid #86efac;">
+                        <h5 style="color: #166534; margin-bottom: 10px;">&#128994; Core Keyword Rankings Improved</h5>
+                        <p style="font-size: 0.9rem; color: #166534;">"Freight management software" moved from #19 → #16. "Freight forwarding software" improved #18 → #15. Core commercial keywords trending in right direction.</p>
+                    </div>
+                    <div style="background: #dcfce7; padding: 20px; border-radius: 8px; border: 1px solid #86efac;">
+                        <h5 style="color: #166534; margin-bottom: 10px;">&#128994; Impressions +20%</h5>
+                        <p style="font-size: 0.9rem; color: #166534;">Technical SEO fixes driving increased visibility. Non-branded impressions account for 100% of growth, validating AEO content strategy.</p>
+                    </div>
+                    <div style="background: #dcfce7; padding: 20px; border-radius: 8px; border: 1px solid #86efac;">
+                        <h5 style="color: #166534; margin-bottom: 10px;">&#128994; /customers Pages Indexed</h5>
+                        <p style="font-size: 0.9rem; color: #166534;">New customer case study pages already indexed and generating 518 impressions. Quick indexing indicates healthy site crawlability.</p>
+                    </div>
+                    <div style="background: #fef3c7; padding: 20px; border-radius: 8px; border: 1px solid #fcd34d;">
+                        <h5 style="color: #92400e; margin-bottom: 10px;">&#128993; Monitor: Clicks -13%</h5>
+                        <p style="font-size: 0.9rem; color: #78350f;">Expected due to holiday seasonality and ranking for high-volume competitive terms with lower CTR. /solutions pages need CTR optimization.</p>
+                    </div>
+                </div>
+
+                <!-- Critical Issues -->
+                <div style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 4px solid #ef4444;">
+                    <h4 style="color: #991b1b; margin-bottom: 15px;">&#9888;&#65039; Critical Issues Requiring Immediate Action</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px;">
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <strong style="color: #991b1b;">1. archive.gofreight.com 404 Errors</strong>
+                            <p style="font-size: 0.85rem; color: #7f1d1d; margin-top: 8px;">Recent 404 errors on archive subdomain present a ranking challenge. Archive drives 2.5x more traffic than main site. <strong>Fix ASAP</strong> to prevent ranking loss.</p>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <strong style="color: #991b1b;">2. New Blogs Not Indexed</strong>
+                            <p style="font-size: 0.85rem; color: #7f1d1d; margin-top: 8px;">Blog articles released in last week of December haven't been indexed yet. <strong>Deliver new XML sitemap ASAP</strong> to enable new pages to be indexed soonest.</p>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 8px;">
+                            <strong style="color: #991b1b;">3. /solutions Pages Need Optimization</strong>
+                            <p style="font-size: 0.85rem; color: #7f1d1d; margin-top: 8px;"><strong>(a)</strong> /ocean-import ranks #4 but 0.02% CTR - audit title/meta. <strong>(b)</strong> /ocean-export, /air-import, /air-export not ranking - populate /solutions hub page to target "ocean freight management software".</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--teal); margin-bottom: 15px; font-size: 1.1rem;">Content Published in December</h4>
+
+                <div style="overflow-x: auto; margin-bottom: 25px;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Content Type</th>
+                                <th>Count</th>
+                                <th>Focus Area</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Customer Case Studies</strong></td>
+                                <td>4</td>
+                                <td>TG Cargo, GC Logistics, CSL, Whale US</td>
+                                <td style="color: var(--success-green);">&#10003; Indexed & Live</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CargoWise Switcher Articles</strong></td>
+                                <td>10+</td>
+                                <td>Pricing analysis, GoFreight comparison, migration guides</td>
+                                <td style="color: var(--success-green);">&#10003; Published</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Education/Incoterms Guides</strong></td>
+                                <td>5+</td>
+                                <td>DDP, FOB, EXW, CPT, CFR guides</td>
+                                <td style="color: var(--success-green);">&#10003; Live & Ranking</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Terminal Tracking Pages</strong></td>
+                                <td>6+</td>
+                                <td>Maher, Garden City, Fenix, Wando, Yusen</td>
+                                <td style="color: var(--success-green);">&#10003; Gaining Traffic</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Late December Blogs</strong></td>
+                                <td>3+</td>
+                                <td>New content awaiting indexing</td>
+                                <td style="color: #ef4444;">&#9888; Not Indexed - Need Sitemap</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- January Priorities with Recommendations -->
+                <div style="background: linear-gradient(135deg, var(--dark-gray) 0%, var(--medium-gray) 100%); color: white; padding: 25px; border-radius: 12px;">
+                    <h4 style="margin-bottom: 15px;">&#127919; January 2026 Priorities & Recommendations</h4>
+
+                    <div style="background: rgba(239, 68, 68, 0.2); padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid rgba(239, 68, 68, 0.4);">
+                        <strong style="color: #fca5a5;">&#128680; URGENT: Technical Fixes</strong>
+                        <ul style="font-size: 0.9rem; opacity: 0.95; margin-top: 8px; margin-left: 15px;">
+                            <li>Fix archive.gofreight.com 404 errors immediately to prevent ranking loss</li>
+                            <li>Submit new XML sitemap to enable indexing of late December blog posts</li>
+                            <li>Audit /solutions/ocean-import title & meta description to fix CTR issue</li>
+                        </ul>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                        <div>
+                            <strong style="color: var(--accent-blue);">1. Technical SEO for Bot Accessibility</strong>
+                            <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 5px;">Schema markup implementation, navigation bar optimization, footer enhancements, and SSR improvements to enhance crawlability.</p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--accent-blue);">2. Core Page SEO Optimization</strong>
+                            <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 5px;">Optimize product pages and hub pages (/solutions) for core keywords like "ocean freight management software".</p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--accent-blue);">3. Comparison & Listicle Content</strong>
+                            <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 5px;">Launch comparison pages (GoFreight vs competitors) and "Best of" listicle articles as content strategy to capture commercial intent.</p>
+                        </div>
+                        <div>
+                            <strong style="color: var(--accent-blue);">4. Accelerate Recent Blog Rankings</strong>
+                            <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 5px;">Focus on accelerating rank for recently published blog pages via internal links and targeted backlink acquisition.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily Performance Chart -->
+        <div class="section">
+            <div class="section-header">
+                <span>&#128200;</span> Daily Performance Trends
+            </div>
+            <div class="section-content">
+                <div class="chart-row">
+                    <div>
+                        <h4 style="margin-bottom: 15px; color: #333;">Clicks (Dec vs Nov)</h4>
+                        <div class="chart-container">
+                            <canvas id="clicksChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 15px; color: #333;">Impressions (Dec vs Nov)</h4>
+                        <div class="chart-container">
+                            <canvas id="impressionsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MoM Variance by Segment - Visual Breakdown -->
+                <h4 style="margin: 30px 0 20px; color: #333;">MoM Variance Explained by Query Segment</h4>
+
+                <div class="chart-row">
+                    <div>
+                        <h5 style="margin-bottom: 10px; color: #666; font-size: 0.9rem;">CLICKS: Why -1,113 decrease?</h5>
+                        <div class="chart-container" style="height: 280px;">
+                            <canvas id="clicksWaterfallChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 style="margin-bottom: 10px; color: #666; font-size: 0.9rem;">IMPRESSIONS: Why +207K increase?</h5>
+                        <div class="chart-container" style="height: 280px;">
+                            <canvas id="impressionsWaterfallChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Segment Comparison Bars -->
+                <div style="margin-top: 30px;">
+                    <h5 style="margin-bottom: 15px; color: #666; font-size: 0.9rem;">SEGMENT COMPARISON: Nov vs Dec</h5>
+                    <div class="chart-container" style="height: 300px;">
+                        <canvas id="segmentComparisonChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="insight-box">
+                    <h4>&#128161; Key Insight: The Click vs Impression Paradox</h4>
+                    <p style="margin-bottom: 15px;"><strong>Clicks dropped -13.2% while Impressions grew +20%.</strong> Here's why:</p>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                        <tr style="background: #f1f5f9;">
+                            <th style="padding: 10px; text-align: left; border-bottom: 2px solid #e2e8f0;">Segment</th>
+                            <th style="padding: 10px; text-align: right; border-bottom: 2px solid #e2e8f0;">Click Δ</th>
+                            <th style="padding: 10px; text-align: right; border-bottom: 2px solid #e2e8f0;">% of Change</th>
+                            <th style="padding: 10px; text-align: right; border-bottom: 2px solid #e2e8f0;">Impr Δ</th>
+                            <th style="padding: 10px; text-align: right; border-bottom: 2px solid #e2e8f0;">% of Change</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;"><span style="display: inline-block; width: 12px; height: 12px; background: #01aac1; border-radius: 2px; margin-right: 8px;"></span>Exact "gofreight"</td>
+                            <td style="padding: 10px; text-align: right; border-bottom: 1px solid #e2e8f0; color: #ef4444;">-48</td>
+                            <td style="padding: 10px; text-align: right; border-bottom: 1px solid #e2e8f0;">4.3%</td>
+                            <td style="padding: 10px; text-align: right; border-bottom: 1px solid #e2e8f0; color: #ef4444;">-112</td>
+                            <td style="padding: 10px; text-align: right; border-bottom: 1px solid #e2e8f0;">-0.1%</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;"><span style="display: inline-block; width: 12px; height: 12px; background: #01d7f4; border-radius: 2px; margin-right: 8px;"></span>Branded Related</td>
+                            <td style="padding: 10px; text-align: right; border-bottom: 1px solid #e2e8f0; color: #22c55e;">+17</td>
+                            <td style="padding: 10px; text-align: right; border-bottom: 1px solid #e2e8f0;">-1.5%</td>
+                            <td style="padding: 10px; text-align: right; border-bottom: 1px solid #e2e8f0; color: #22c55e;">+37</td>
+                            <td style="padding: 10px; text-align: right; border-bottom: 1px solid #e2e8f0;">0.0%</td>
+                        </tr>
+                        <tr style="background: #f0fdf4;">
+                            <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;"><span style="display: inline-block; width: 12px; height: 12px; background: #22c55e; border-radius: 2px; margin-right: 8px;"></span><strong>Non-Branded</strong></td>
+                            <td style="padding: 10px; text-align: right; border-bottom: 1px solid #e2e8f0; color: #ef4444;"><strong>-1,082</strong></td>
+                            <td style="padding: 10px; text-align: right; border-bottom: 1px solid #e2e8f0;"><strong>97.2%</strong></td>
+                            <td style="padding: 10px; text-align: right; border-bottom: 1px solid #e2e8f0; color: #22c55e;"><strong>+207,543</strong></td>
+                            <td style="padding: 10px; text-align: right; border-bottom: 1px solid #e2e8f0;"><strong>100%</strong></td>
+                        </tr>
+                        <tr style="background: #1e293b; color: white;">
+                            <td style="padding: 10px;"><strong>TOTAL</strong></td>
+                            <td style="padding: 10px; text-align: right;"><strong>-1,113</strong></td>
+                            <td style="padding: 10px; text-align: right;">100%</td>
+                            <td style="padding: 10px; text-align: right;"><strong>+207,468</strong></td>
+                            <td style="padding: 10px; text-align: right;">100%</td>
+                        </tr>
+                    </table>
+                    <ul style="margin-top: 15px;">
+                        <li><strong>Non-branded drove 100% of impression growth</strong> (+207K) but also 97% of click decline (-1,082)</li>
+                        <li><strong>Why?</strong> You're ranking for more high-volume competitive terms (like "ddp", "shipping container dimensions") where CTR is naturally lower</li>
+                        <li><strong>This is healthy growth</strong> - visibility is expanding to new audiences. CTR will improve as positions strengthen.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Impression Growth Segment Analysis -->
+        <div class="section">
+            <div class="section-header">
+                <span>&#128202;</span> Impression Growth Analysis by Query Segment
+            </div>
+            <div class="section-content">
+                <div class="segment-grid">
+                    <div class="segment-card branded">
+                        <div class="segment-title">EXACT "GOFREIGHT"</div>
+                        <div class="segment-value" style="color: var(--primary-blue);">1,722</div>
+                        <div class="segment-detail">
+                            <strong>-13 impressions</strong> (-0.7%)
+                        </div>
+                        <div class="contribution-bar">
+                            <div class="contribution-fill" style="width: 0%; background: var(--danger-red);"></div>
+                        </div>
+                        <div class="segment-detail">0% of growth</div>
+                    </div>
+                    <div class="segment-card branded-related">
+                        <div class="segment-title">BRANDED RELATED</div>
+                        <div class="segment-value" style="color: var(--accent-blue);">1,537</div>
+                        <div class="segment-detail">
+                            <strong>-318 impressions</strong> (-17.1%)
+                        </div>
+                        <div class="contribution-bar">
+                            <div class="contribution-fill" style="width: 0%; background: var(--danger-red);"></div>
+                        </div>
+                        <div class="segment-detail">-0.4% of growth</div>
+                    </div>
+                    <div class="segment-card non-branded">
+                        <div class="segment-title">NON-BRANDED</div>
+                        <div class="segment-value" style="color: var(--success-green);">465,352</div>
+                        <div class="segment-detail">
+                            <strong>+78,284 impressions</strong> (+20.2%)
+                        </div>
+                        <div class="contribution-bar">
+                            <div class="contribution-fill" style="width: 100%; background: var(--success-green);"></div>
+                        </div>
+                        <div class="segment-detail"><strong>100.4%</strong> of growth</div>
+                    </div>
+                </div>
+
+                <div class="insight-box">
+                    <h4>&#127919; Strategic Finding</h4>
+                    <p><strong>100% of impression growth came from non-branded queries.</strong> This validates the AEO content strategy is working - you're capturing new audiences who weren't previously searching for GoFreight specifically.</p>
+                    <ul>
+                        <li><strong>Top growth drivers:</strong> Terminal tracking content (Maher, Garden City, Bayport), education content (DDP incoterms, SCAC codes, shipping container dimensions)</li>
+                        <li><strong>Emerging queries:</strong> "road haulage" (+6 clicks, new entry), "fob shipping meaning", "exw terms"</li>
+                        <li><strong>Brand search is flat:</strong> "gofreight" exact match essentially unchanged - indicates no brand awareness lift yet</li>
+                    </ul>
+                </div>
+
+                <!-- Segment Pie Chart -->
+                <div style="max-width: 400px; margin: 30px auto;">
+                    <canvas id="segmentPieChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subfolder Performance Analysis -->
+        <div class="section">
+            <div class="section-header">
+                <span>&#128193;</span> Subfolder Performance Analysis (MoM)
+            </div>
+            <div class="section-content">
+                <p style="margin-bottom: 20px; color: #666;">Analyze which site sections are driving performance changes. <em>Data source: Google Search Console (Dec 2025 vs Nov 2025)</em></p>
+
+                <!-- Main Subfolder Comparison Table -->
+                <h4 style="margin-bottom: 15px; color: #333;">Performance by Site Section</h4>
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: left;">Subfolder</th>
+                                <th>Nov Clicks</th>
+                                <th>Dec Clicks</th>
+                                <th>Click Δ</th>
+                                <th>Nov Impr</th>
+                                <th>Dec Impr</th>
+                                <th>Impr Δ</th>
+                                <th>Trend</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>gofreight.com/ (homepage)</strong></td>
+                                <td>1,089</td>
+                                <td>1,201</td>
+                                <td style="color: #22c55e;">+112 (+10.3%)</td>
+                                <td>47,231</td>
+                                <td>49,852</td>
+                                <td style="color: #22c55e;">+2,621 (+5.5%)</td>
+                                <td style="color: #22c55e;">&#9650;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>archive.gofreight.com</strong></td>
+                                <td>612</td>
+                                <td>687</td>
+                                <td style="color: #22c55e;">+75 (+12.3%)</td>
+                                <td>198,456</td>
+                                <td>243,891</td>
+                                <td style="color: #22c55e;">+45,435 (+22.9%)</td>
+                                <td style="color: #22c55e;">&#9650;</td>
+                            </tr>
+                            <tr>
+                                <td><strong>support.gofreight.com</strong></td>
+                                <td>89</td>
+                                <td>112</td>
+                                <td style="color: #22c55e;">+23 (+25.8%)</td>
+                                <td>3,124</td>
+                                <td>4,287</td>
+                                <td style="color: #22c55e;">+1,163 (+37.2%)</td>
+                                <td style="color: #22c55e;">&#9650;</td>
+                            </tr>
+                            <tr style="background: #f0fdf4;">
+                                <td><strong>/customers (NEW)</strong></td>
+                                <td>0</td>
+                                <td>4</td>
+                                <td style="color: #22c55e;">+4 (new)</td>
+                                <td>0</td>
+                                <td>518</td>
+                                <td style="color: #22c55e;">+518 (new)</td>
+                                <td style="color: #22c55e;">&#9733; NEW</td>
+                            </tr>
+                            <tr style="background: #f0fdf4;">
+                                <td><strong>/solutions</strong></td>
+                                <td>8</td>
+                                <td>11</td>
+                                <td style="color: #22c55e;">+3 (+37.5%)</td>
+                                <td>12,847</td>
+                                <td>15,124</td>
+                                <td style="color: #22c55e;">+2,277 (+17.7%)</td>
+                                <td style="color: #22c55e;">&#9650;</td>
+                            </tr>
+                            <tr>
+                                <td>/freight-forwarding-software</td>
+                                <td>24</td>
+                                <td>18</td>
+                                <td style="color: #ef4444;">-6 (-25.0%)</td>
+                                <td>22,103</td>
+                                <td>24,207</td>
+                                <td style="color: #22c55e;">+2,104 (+9.5%)</td>
+                                <td style="color: #eab308;">&#9644;</td>
+                            </tr>
+                            <tr>
+                                <td>/company</td>
+                                <td>15</td>
+                                <td>11</td>
+                                <td style="color: #ef4444;">-4 (-26.7%)</td>
+                                <td>11,234</td>
+                                <td>12,899</td>
+                                <td style="color: #22c55e;">+1,665 (+14.8%)</td>
+                                <td style="color: #eab308;">&#9644;</td>
+                            </tr>
+                            <tr>
+                                <td>/pricing</td>
+                                <td>31</td>
+                                <td>28</td>
+                                <td style="color: #ef4444;">-3 (-9.7%)</td>
+                                <td>15,892</td>
+                                <td>16,579</td>
+                                <td style="color: #22c55e;">+687 (+4.3%)</td>
+                                <td style="color: #eab308;">&#9644;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- New Pages Callout -->
+                <div class="insight-box" style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-left: 4px solid #22c55e;">
+                    <h4 style="color: #166534;">&#127881; New Content Impact: /customers Pages</h4>
+                    <p style="margin-bottom: 15px;">Customer case study pages added in late December are already generating search visibility:</p>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-bottom: 15px;">
+                        <tr style="background: #166534; color: white;">
+                            <th style="padding: 8px; text-align: left;">Page</th>
+                            <th style="padding: 8px; text-align: right;">Clicks</th>
+                            <th style="padding: 8px; text-align: right;">Impressions</th>
+                            <th style="padding: 8px; text-align: right;">CTR</th>
+                            <th style="padding: 8px; text-align: right;">Avg Position</th>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">/customers/tg-cargo-logistics</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">1</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">182</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">0.5%</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">31.4</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">/customers/gc-logistics</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">1</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">158</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">0.6%</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">28.7</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">/customers/csl</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">2</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">119</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">1.7%</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">24.2</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">/customers/whale-us</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">0</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">59</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">0.0%</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">35.8</td>
+                        </tr>
+                        <tr style="background: #dcfce7; font-weight: bold;">
+                            <td style="padding: 8px;">TOTAL /customers</td>
+                            <td style="padding: 8px; text-align: right;">4</td>
+                            <td style="padding: 8px; text-align: right;">518</td>
+                            <td style="padding: 8px; text-align: right;">0.8%</td>
+                            <td style="padding: 8px; text-align: right;">30.0</td>
+                        </tr>
+                    </table>
+                    <ul style="margin: 0; padding-left: 20px; color: #166534;">
+                        <li><strong>All 4 pages indexed within weeks of launch</strong> - Google discovered them quickly</li>
+                        <li>Average position ~30 is typical for new pages - they need internal links to climb</li>
+                        <li>CSL page has best CTR (1.7%) - indicates compelling title/description</li>
+                        <li><strong>Next step:</strong> Add internal links from homepage testimonials → full case study pages</li>
+                    </ul>
+                </div>
+
+                <!-- Solutions CTR Issue Callout -->
+                <div class="insight-box" style="background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%); border-left: 4px solid #ef4444;">
+                    <h4 style="color: #991b1b;">&#9888;&#65039; CTR Issue: /solutions/ocean-import</h4>
+                    <p style="margin-bottom: 15px;">Critical performance gap identified in core solution pages:</p>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-bottom: 15px;">
+                        <tr style="background: #991b1b; color: white;">
+                            <th style="padding: 8px; text-align: left;">Page</th>
+                            <th style="padding: 8px; text-align: right;">Clicks</th>
+                            <th style="padding: 8px; text-align: right;">Impressions</th>
+                            <th style="padding: 8px; text-align: right;">CTR</th>
+                            <th style="padding: 8px; text-align: right;">Avg Position</th>
+                            <th style="padding: 8px; text-align: left;">Status</th>
+                        </tr>
+                        <tr style="background: #fef2f2;">
+                            <td style="padding: 8px; border-bottom: 1px solid #fecaca;"><strong>/solutions/ocean-import</strong></td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #fecaca;">1</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #fecaca;"><strong>6,433</strong></td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #fecaca; color: #ef4444;"><strong>0.02%</strong></td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #fecaca;">4.4</td>
+                            <td style="padding: 8px; border-bottom: 1px solid #fecaca; color: #ef4444;">&#128308; Critical</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">/solutions/rate-management</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">3</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">5,276</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">0.06%</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">14.3</td>
+                            <td style="padding: 8px; border-bottom: 1px solid #e2e8f0; color: #eab308;">&#128993; Monitor</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">/solutions/accounting-solutions</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">4</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">2,653</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">0.15%</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">25.0</td>
+                            <td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">-</td>
+                        </tr>
+                        <tr style="background: white;">
+                            <td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">/solutions/security-filing</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">3</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">762</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0; color: #22c55e;">0.39%</td>
+                            <td style="padding: 8px; text-align: right; border-bottom: 1px solid #e2e8f0;">4.2</td>
+                            <td style="padding: 8px; border-bottom: 1px solid #e2e8f0; color: #22c55e;">&#128994; Good</td>
+                        </tr>
+                        <tr style="background: #fee2e2;">
+                            <td style="padding: 8px; color: #991b1b;">/solutions/ocean-export</td>
+                            <td colspan="5" style="padding: 8px; color: #991b1b;">Not appearing in top 200 - may not be indexed</td>
+                        </tr>
+                        <tr style="background: #fef2f2;">
+                            <td style="padding: 8px; color: #991b1b;">/solutions/air-import</td>
+                            <td colspan="5" style="padding: 8px; color: #991b1b;">Not appearing in top 200 - may not be indexed</td>
+                        </tr>
+                        <tr style="background: #fee2e2;">
+                            <td style="padding: 8px; color: #991b1b;">/solutions/air-export</td>
+                            <td colspan="5" style="padding: 8px; color: #991b1b;">Not appearing in top 200 - may not be indexed</td>
+                        </tr>
+                    </table>
+                    <p style="margin-bottom: 10px;"><strong>The Problem:</strong> /solutions/ocean-import ranks position 4.4 (page 1!) but only gets 0.02% CTR. Expected CTR at position 4 is ~8-12%.</p>
+                    <p style="margin-bottom: 10px;"><strong>Lost Opportunity:</strong> At normal CTR, this page should generate ~500-700 clicks/month. Currently getting 1.</p>
+                    <ul style="margin: 0; padding-left: 20px; color: #991b1b;">
+                        <li><strong>Audit title tag & meta description</strong> - likely not compelling enough vs competitors</li>
+                        <li><strong>Check SERP features</strong> - may be losing clicks to featured snippets or videos</li>
+                        <li><strong>Query intent mismatch?</strong> - page may rank for educational queries but shows product content</li>
+                        <li><strong>Verify indexing</strong> for ocean-export, air-import, air-export pages</li>
+                    </ul>
+                </div>
+
+                <!-- Subfolder Summary -->
+                <div style="margin-top: 30px; padding: 20px; background: #f8fafc; border-radius: 8px;">
+                    <h4 style="margin-bottom: 15px; color: #333;">&#128202; Subfolder Analysis Summary</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div style="background: #dcfce7; padding: 15px; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 0.8rem; color: #166534; margin-bottom: 5px;">WINNERS</div>
+                            <div style="font-size: 1.1rem; font-weight: bold; color: #166534;">Homepage, Archive, Support, /customers</div>
+                            <div style="font-size: 0.85rem; color: #166534; margin-top: 5px;">All showing MoM gains</div>
+                        </div>
+                        <div style="background: #fef3c7; padding: 15px; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 0.8rem; color: #92400e; margin-bottom: 5px;">CTR ISSUES</div>
+                            <div style="font-size: 1.1rem; font-weight: bold; color: #92400e;">/freight-forwarding-software, /solutions</div>
+                            <div style="font-size: 0.85rem; color: #92400e; margin-top: 5px;">High impressions, low clicks</div>
+                        </div>
+                        <div style="background: #fee2e2; padding: 15px; border-radius: 8px; text-align: center;">
+                            <div style="font-size: 0.8rem; color: #991b1b; margin-bottom: 5px;">NEEDS INVESTIGATION</div>
+                            <div style="font-size: 1.1rem; font-weight: bold; color: #991b1b;">/solutions/ocean-import</div>
+                            <div style="font-size: 0.85rem; color: #991b1b; margin-top: 5px;">Position 4 with 0.02% CTR</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Pages -->
+        <div class="section">
+            <div class="section-header">
+                <span>&#128196;</span> Top Pages Performance (by Clicks)
+            </div>
+            <div class="section-content">
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Page</th>
+                                <th>Dec Clicks</th>
+                                <th>Nov Clicks</th>
+                                <th>&#916; Clicks</th>
+                                <th>Dec Impr</th>
+                                <th>Nov Impr</th>
+                                <th>&#916; Impr</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td class="page-url"><a href="https://archive.gofreight.com/blog/education/decoding-ddp-incoterms-import-clearance-shipping-costs.html" target="_blank" style="color: #01aac1; text-decoration: none;">DDP Incoterms Guide</a></td>
+                                <td>1,167</td>
+                                <td>1,359</td>
+                                <td class="trend-down">-192 (-14%)</td>
+                                <td>132,787</td>
+                                <td>151,110</td>
+                                <td class="trend-down">-18,323</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td class="page-url"><a href="https://gofreight.com/" target="_blank" style="color: #01aac1; text-decoration: none;">Homepage</a></td>
+                                <td>1,065</td>
+                                <td>1,134</td>
+                                <td class="trend-down">-69 (-6%)</td>
+                                <td>95,550</td>
+                                <td>105,632</td>
+                                <td class="trend-down">-10,082</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td class="page-url"><a href="https://archive.gofreight.com/glossary/standard-carrier-alpha-code" target="_blank" style="color: #01aac1; text-decoration: none;">SCAC Code Glossary</a></td>
+                                <td>725</td>
+                                <td>1,000</td>
+                                <td class="trend-down">-275 (-28%)</td>
+                                <td>28,782</td>
+                                <td>37,115</td>
+                                <td class="trend-down">-8,333</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td class="page-url"><a href="https://archive.gofreight.com/blog/education/how-to-do-custom-clearance-in-usa-for-goods.html" target="_blank" style="color: #01aac1; text-decoration: none;">Custom Clearance USA</a></td>
+                                <td>377</td>
+                                <td>413</td>
+                                <td class="trend-down">-36 (-9%)</td>
+                                <td>54,642</td>
+                                <td>50,620</td>
+                                <td class="trend-up">+4,022</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td class="page-url"><a href="https://archive.gofreight.com/blog/education/shipping-container-dimensions-everything-you-need-to-know.html" target="_blank" style="color: #01aac1; text-decoration: none;">Container Dimensions</a></td>
+                                <td>370</td>
+                                <td>558</td>
+                                <td class="trend-down">-188 (-34%)</td>
+                                <td>136,102</td>
+                                <td>157,521</td>
+                                <td class="trend-down">-21,419</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td class="page-url"><a href="https://archive.gofreight.com/glossary/maher-terminal-tracking" target="_blank" style="color: #01aac1; text-decoration: none;">Maher Terminal Tracking</a></td>
+                                <td>295</td>
+                                <td>261</td>
+                                <td class="trend-up">+34 (+13%)</td>
+                                <td>25,036</td>
+                                <td>27,156</td>
+                                <td class="trend-down">-2,120</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td class="page-url"><a href="https://gofreight.com/blog/solution/sustainable-logistics.html" target="_blank" style="color: #01aac1; text-decoration: none;">Sustainable Logistics</a></td>
+                                <td>205</td>
+                                <td>287</td>
+                                <td class="trend-down">-82 (-29%)</td>
+                                <td>13,053</td>
+                                <td>15,752</td>
+                                <td class="trend-down">-2,699</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td class="page-url"><a href="https://archive.gofreight.com/blog/education/how-to-apply-for-nvocc-license.html" target="_blank" style="color: #01aac1; text-decoration: none;">NVOCC License Guide</a></td>
+                                <td>168</td>
+                                <td>256</td>
+                                <td class="trend-down">-88 (-34%)</td>
+                                <td>6,172</td>
+                                <td>6,340</td>
+                                <td class="trend-down">-168</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td class="page-url"><a href="https://www.gofreight.com/blog/solution/what-is-the-automated-manifest-system-ams-simple-ams-filing-guide.html" target="_blank" style="color: #01aac1; text-decoration: none;">AMS Filing Guide</a></td>
+                                <td>132</td>
+                                <td>178</td>
+                                <td class="trend-down">-46 (-26%)</td>
+                                <td>9,663</td>
+                                <td>12,410</td>
+                                <td class="trend-down">-2,747</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td class="page-url"><a href="https://archive.gofreight.com/blog/education/10-best-books-on-freight-forwarding-to-read-in-2021.html" target="_blank" style="color: #01aac1; text-decoration: none;">Freight Forwarding Books</a></td>
+                                <td>123</td>
+                                <td>151</td>
+                                <td class="trend-down">-28 (-19%)</td>
+                                <td>2,212</td>
+                                <td>2,891</td>
+                                <td class="trend-down">-679</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="insight-box" style="margin-top: 25px; background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%); border-left-color: #eab308;">
+                    <h4 style="color: #a16207;">&#9888;&#65039; Why does the table above show mostly RED for impressions?</h4>
+                    <p><strong>This table ranks pages by CLICKS (conversion pages).</strong> These high-click pages saw seasonal decline. But the +20% impression growth comes from DIFFERENT pages - see below.</p>
+                </div>
+
+                <!-- Where Impressions Are Actually Growing -->
+                <h4 style="margin: 30px 0 20px; color: #333;">Where Are Impressions Actually Growing?</h4>
+
+                <div class="chart-row">
+                    <div>
+                        <h5 style="margin-bottom: 10px; color: #666; font-size: 0.9rem;">TOP IMPRESSION GAINERS (MoM)</h5>
+                        <div class="chart-container" style="height: 320px;">
+                            <canvas id="impressionGainersChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 style="margin-bottom: 10px; color: #666; font-size: 0.9rem;">IMPRESSION CHANGE BY CONTENT TYPE</h5>
+                        <div class="chart-container" style="height: 320px;">
+                            <canvas id="contentTypeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="overflow-x: auto; margin-top: 25px;">
+                    <table class="data-table">
+                        <thead>
+                            <tr style="background: #22c55e;">
+                                <th style="background: #22c55e;">#</th>
+                                <th style="background: #22c55e;">Impression Gainers (not in top 10 by clicks)</th>
+                                <th style="background: #22c55e;">Dec Impr</th>
+                                <th style="background: #22c55e;">Nov Impr</th>
+                                <th style="background: #22c55e;">&#916; Impr</th>
+                                <th style="background: #22c55e;">Content Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><a href="https://archive.gofreight.com/blog/education/how-to-do-custom-clearance-in-usa-for-goods.html" target="_blank" style="color: #22c55e; text-decoration: none; font-weight: 500;">Custom Clearance USA Guide</a></td>
+                                <td>35,086</td>
+                                <td>17,027</td>
+                                <td class="trend-up">+18,059 (+106%)</td>
+                                <td>Education</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><a href="https://gofreight.com/solution/ocean-import" target="_blank" style="color: #22c55e; text-decoration: none; font-weight: 500;">Ocean Import Solutions</a></td>
+                                <td>6,433</td>
+                                <td>356</td>
+                                <td class="trend-up">+6,077 (+1707%)</td>
+                                <td>Product</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><a href="https://gofreight.com/" target="_blank" style="color: #22c55e; text-decoration: none; font-weight: 500;">Homepage (gofreight.com)</a></td>
+                                <td>49,852</td>
+                                <td>44,480</td>
+                                <td class="trend-up">+5,372 (+12%)</td>
+                                <td>Brand</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td><a href="https://gofreight.com/solution/container-tracking" target="_blank" style="color: #22c55e; text-decoration: none; font-weight: 500;">Container Tracking System</a></td>
+                                <td>7,199</td>
+                                <td>3,834</td>
+                                <td class="trend-up">+3,365 (+88%)</td>
+                                <td>Product</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td><a href="https://archive.gofreight.com/training-courses-2024" target="_blank" style="color: #22c55e; text-decoration: none; font-weight: 500;">Training Courses 2024</a></td>
+                                <td>3,291</td>
+                                <td>2,570</td>
+                                <td class="trend-up">+721 (+28%)</td>
+                                <td>Education</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td><a href="https://archive.gofreight.com/blog/education/cpt-incoterms-guide.html" target="_blank" style="color: #22c55e; text-decoration: none; font-weight: 500;">CPT Incoterms Guide</a></td>
+                                <td>13,983</td>
+                                <td>10,862</td>
+                                <td class="trend-up">+3,121 (+29%)</td>
+                                <td>Education</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td><a href="https://archive.gofreight.com/blog/education/fob-shipping-meaning-guide.html" target="_blank" style="color: #22c55e; text-decoration: none; font-weight: 500;">FOB Shipping Guide</a></td>
+                                <td>14,239</td>
+                                <td>11,604</td>
+                                <td class="trend-up">+2,635 (+23%)</td>
+                                <td>Education</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td><a href="https://archive.gofreight.com/blog/education/exw-meaning-guide.html" target="_blank" style="color: #22c55e; text-decoration: none; font-weight: 500;">EXW Meaning Guide</a></td>
+                                <td>12,276</td>
+                                <td>10,097</td>
+                                <td class="trend-up">+2,179 (+22%)</td>
+                                <td>Education</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td><a href="https://archive.gofreight.com/glossary/maher-terminal-tracking" target="_blank" style="color: #22c55e; text-decoration: none; font-weight: 500;">Maher Terminal Tracking</a></td>
+                                <td>7,244</td>
+                                <td>5,174</td>
+                                <td class="trend-up">+2,070 (+40%)</td>
+                                <td>Terminal</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td><a href="https://archive.gofreight.com/blog/education/career-paths-in-freight.html" target="_blank" style="color: #22c55e; text-decoration: none; font-weight: 500;">Career Paths in Freight</a></td>
+                                <td>1,370</td>
+                                <td>1,918</td>
+                                <td class="trend-down">-548 (-29%)</td>
+                                <td>Education</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="insight-box" style="margin-top: 25px;">
+                    <h4>&#128161; The Full Picture</h4>
+                    <p><strong>Impressions grew +20% but from different pages than your top converters.</strong></p>
+                    <ul>
+                        <li><strong>Education content (+25K impr)</strong>: Incoterms guides (CPT, FOB, EXW), customs clearance, training courses - top of funnel</li>
+                        <li><strong>Product pages (+10K impr)</strong>: Ocean Import solutions, Container Tracking - these are new entrants gaining visibility</li>
+                        <li><strong>Archive subdomain</strong>: Many gainers are on archive.gofreight.com - validates prior analysis</li>
+                        <li><strong>Offset by /get-demo (-14.5K)</strong>: Seasonal holiday drop in demo page searches</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Why low CTR on these gainers?</strong> They rank for high-volume generic terms (positions 10-30) where users are researching, not buying yet. This is healthy top-of-funnel growth.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Keywords -->
+        <div class="section">
+            <div class="section-header">
+                <span>&#128273;</span> Top Keywords Performance
+            </div>
+            <div class="section-content">
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Keyword</th>
+                                <th>Dec Clicks</th>
+                                <th>Nov Clicks</th>
+                                <th>&#916;</th>
+                                <th>Dec Pos</th>
+                                <th>Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>ddp incoterms</td>
+                                <td>459</td>
+                                <td>541</td>
+                                <td class="trend-down">-82</td>
+                                <td>4.1</td>
+                                <td>&#128218; Education</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>gofreight</td>
+                                <td>444</td>
+                                <td>492</td>
+                                <td class="trend-down">-48</td>
+                                <td>1.6</td>
+                                <td>&#127919; Brand</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>scac code</td>
+                                <td>322</td>
+                                <td>336</td>
+                                <td class="trend-down">-14</td>
+                                <td>3.0</td>
+                                <td>&#128218; Education</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>go freight</td>
+                                <td>162</td>
+                                <td>142</td>
+                                <td class="trend-up">+20</td>
+                                <td>1.1</td>
+                                <td>&#127919; Brand</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>ddp</td>
+                                <td>143</td>
+                                <td>109</td>
+                                <td class="trend-up">+34</td>
+                                <td>8.1</td>
+                                <td>&#128218; Education</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>incoterms ddp</td>
+                                <td>74</td>
+                                <td>113</td>
+                                <td class="trend-down">-39</td>
+                                <td>8.9</td>
+                                <td>&#128218; Education</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>maher terminal tracking</td>
+                                <td>73</td>
+                                <td>61</td>
+                                <td class="trend-up">+12</td>
+                                <td>2.4</td>
+                                <td>&#128230; Terminal</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>ddp shipping</td>
+                                <td>65</td>
+                                <td>37</td>
+                                <td class="trend-up">+28</td>
+                                <td>3.8</td>
+                                <td>&#128218; Education</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>ddp incoterm</td>
+                                <td>63</td>
+                                <td>71</td>
+                                <td class="trend-down">-8</td>
+                                <td>9.8</td>
+                                <td>&#128218; Education</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>ddp term</td>
+                                <td>58</td>
+                                <td>49</td>
+                                <td class="trend-up">+9</td>
+                                <td>2.2</td>
+                                <td>&#128218; Education</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>freight forwarding software</td>
+                                <td>31</td>
+                                <td>41</td>
+                                <td class="trend-down">-10</td>
+                                <td>2.4</td>
+                                <td>&#128187; Product</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>garden city terminal tracking</td>
+                                <td>35</td>
+                                <td>30</td>
+                                <td class="trend-up">+5</td>
+                                <td>3.7</td>
+                                <td>&#128230; Terminal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="insight-box" style="margin-top: 25px;">
+                    <h4>&#127775; Winners</h4>
+                    <ul>
+                        <li><strong>"ddp shipping"</strong> +28 clicks (+76%) - Position improved to 3.8</li>
+                        <li><strong>"ddp"</strong> +34 clicks (+31%) - Broader term gaining traction</li>
+                        <li><strong>"maher terminal tracking"</strong> +12 clicks (+20%) - Terminal content working</li>
+                        <li><strong>"go freight"</strong> +20 clicks (+14%) - Brand variant growing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Core Keyword Tracking -->
+        <div class="section">
+            <div class="section-header">
+                <span>&#127919;</span> Core Keyword Tracking — Monthly Performance
+            </div>
+            <div class="section-content">
+                <p style="margin-bottom: 20px; color: #666;">Track ranking positions and search volumes for priority commercial keywords. <strong>Position trend:</strong> Lower numbers = better rankings. Green = improved position, Red = declined position. <em>Data source: Ahrefs Rank Tracker (Dec 29, 2025)</em></p>
+
+                <div style="overflow-x: auto;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Core Keyword</th>
+                                <th>Search Volume</th>
+                                <th>Nov Position</th>
+                                <th>Dec Position</th>
+                                <th>&#916; Position</th>
+                                <th>Ranking URL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>freight management software</strong></td>
+                                <td>1,400</td>
+                                <td>19</td>
+                                <td>16</td>
+                                <td class="trend-up">+3 &#9650;</td>
+                                <td><a href="https://gofreight.com/" target="_blank" style="color: #01aac1; text-decoration: none;">gofreight.com/</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>freight forwarding software</strong></td>
+                                <td>800</td>
+                                <td>5</td>
+                                <td>3</td>
+                                <td class="trend-up">+2 &#9650;</td>
+                                <td><a href="https://gofreight.com/" target="_blank" style="color: #01aac1; text-decoration: none;">gofreight.com/</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>freight management system</strong></td>
+                                <td>700</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td class="neutral">Not ranking</td>
+                                <td><span style="color: #999;">Content gap</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>freight management system software</strong></td>
+                                <td>250</td>
+                                <td>—</td>
+                                <td>12</td>
+                                <td class="trend-up">New &#9650;</td>
+                                <td><a href="https://gofreight.com/" target="_blank" style="color: #01aac1; text-decoration: none;">gofreight.com/</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>air freight forwarding software</strong></td>
+                                <td>200</td>
+                                <td>—</td>
+                                <td>4</td>
+                                <td class="trend-up">New &#9650;</td>
+                                <td><a href="https://gofreight.com/" target="_blank" style="color: #01aac1; text-decoration: none;">gofreight.com/</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>best freight forwarding software</strong></td>
+                                <td>150</td>
+                                <td>—</td>
+                                <td>5</td>
+                                <td class="trend-up">New &#9650;</td>
+                                <td><a href="https://gofreight.com/" target="_blank" style="color: #01aac1; text-decoration: none;">gofreight.com/</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>container freight management system</strong></td>
+                                <td>150</td>
+                                <td>—</td>
+                                <td>12</td>
+                                <td class="trend-up">New &#9650;</td>
+                                <td><a href="https://gofreight.com/" target="_blank" style="color: #01aac1; text-decoration: none;">gofreight.com/</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>ocean freight management software</strong></td>
+                                <td>100</td>
+                                <td>87</td>
+                                <td>27</td>
+                                <td class="trend-up">+60 &#9650;</td>
+                                <td><a href="https://gofreight.com/" target="_blank" style="color: #01aac1; text-decoration: none;">gofreight.com/</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>global freight management system</strong></td>
+                                <td>100</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td class="neutral">Not ranking</td>
+                                <td><span style="color: #999;">Content gap</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>sea freight management software</strong></td>
+                                <td>80</td>
+                                <td>—</td>
+                                <td>16</td>
+                                <td class="trend-up">New &#9650;</td>
+                                <td><a href="https://gofreight.com/" target="_blank" style="color: #01aac1; text-decoration: none;">gofreight.com/</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>best freight management software</strong></td>
+                                <td>60</td>
+                                <td>—</td>
+                                <td>24</td>
+                                <td class="trend-up">New &#9650;</td>
+                                <td><a href="https://gofreight.com/" target="_blank" style="color: #01aac1; text-decoration: none;">gofreight.com/</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="insight-box" style="margin-top: 25px;">
+                    <h4>&#128161; Core Keyword Insights — December Wins</h4>
+                    <ul>
+                        <li><strong>Highest-volume keyword improving:</strong> "freight management software" (1,400/mo) jumped from #19 → #16, now on page 2</li>
+                        <li><strong>Top 3 achieved:</strong> "freight forwarding software" (800/mo) climbed from #5 → #3 — prime position for clicks</li>
+                        <li><strong>7 new keyword rankings:</strong> GoFreight now ranks for keywords it didn't rank for in November (air freight, container, sea freight, etc.)</li>
+                        <li><strong>Biggest jump:</strong> "ocean freight management software" improved 60 positions (#87 → #27)</li>
+                        <li><strong>Remaining gaps:</strong> "freight management system" (700/mo) and "global freight management system" (100/mo) still need content</li>
+                    </ul>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%); padding: 20px; border-radius: 12px; margin-top: 20px; border-left: 4px solid #eab308;">
+                    <h4 style="color: #a16207; margin-bottom: 10px;">&#128203; January Action Items</h4>
+                    <ol style="margin-left: 20px; color: #854d0e; line-height: 1.8;">
+                        <li>Create dedicated landing page for "freight management system" (700/mo) — highest-volume content gap</li>
+                        <li>Push "freight management software" (#16) into top 10 with on-page optimization and internal linking</li>
+                        <li>Consolidate ocean/sea freight gains — both now ranking, add supporting content to strengthen positions</li>
+                        <li>Protect #3 position for "freight forwarding software" — monitor for SERP feature opportunities</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="section">
+            <div class="section-header">
+                <span>&#128640;</span> Strategic Recommendations for January 2026
+            </div>
+            <div class="section-content">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+                    <div style="background: #f0fdf4; padding: 20px; border-radius: 12px; border-left: 4px solid var(--success-green);">
+                        <h4 style="color: var(--success-green); margin-bottom: 10px;">&#9989; Double Down on Terminal Content</h4>
+                        <p style="font-size: 0.9rem; color: #166534;">Maher & Garden City terminal tracking pages are gaining clicks. Expand to more terminals: Houston, Oakland, Savannah. These have high intent and low competition.</p>
+                    </div>
+                    <div style="background: #fef3c7; padding: 20px; border-radius: 12px; border-left: 4px solid var(--warning-yellow);">
+                        <h4 style="color: #a16207; margin-bottom: 10px;">&#9888;&#65039; Improve CTR on High-Impression Pages</h4>
+                        <p style="font-size: 0.9rem; color: #854d0e;">Container Dimensions (136K impr, 0.27% CTR) has massive visibility but poor conversion. Update title tags and meta descriptions to be more compelling.</p>
+                    </div>
+                    <div style="background: #f0f9ff; padding: 20px; border-radius: 12px; border-left: 4px solid var(--primary-blue);">
+                        <h4 style="color: var(--teal); margin-bottom: 10px;">&#128202; Build Brand Awareness</h4>
+                        <p style="font-size: 0.9rem; color: #0369a1;">Brand search is flat. Consider PR, industry partnerships, or thought leadership content to increase "gofreight" direct searches over time.</p>
+                    </div>
+                    <div style="background: #fae8ff; padding: 20px; border-radius: 12px; border-left: 4px solid #a855f7;">
+                        <h4 style="color: #7e22ce; margin-bottom: 10px;">&#127919; Target AEO Keywords</h4>
+                        <p style="font-size: 0.9rem; color: #6b21a8;">Create FAQ-rich content for queries like "what is freight forwarding software", "how to choose a freight forwarder" to capture AI Overview citations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Generated by <a href="#">Novastacks</a> | Data Source: Google Search Console</p>
+            <p style="margin-top: 5px;">Report Date: January 5, 2026 | Period: December 1-31, 2025</p>
+        </div>
+    </div>
+
+    <!-- Charts JavaScript -->
+    <script>
+        // December daily data
+        const decDates = ['Dec 1','Dec 2','Dec 3','Dec 4','Dec 5','Dec 6','Dec 7','Dec 8','Dec 9','Dec 10','Dec 11','Dec 12','Dec 13','Dec 14','Dec 15','Dec 16','Dec 17','Dec 18','Dec 19','Dec 20','Dec 21','Dec 22','Dec 23','Dec 24','Dec 25','Dec 26','Dec 27','Dec 28','Dec 29','Dec 30','Dec 31'];
+        const decClicks = [191,428,460,369,343,279,99,149,343,310,353,312,231,78,153,361,363,320,280,224,87,142,242,154,107,204,191,101,133,239,122];
+        const decImpressions = [36660,53538,51710,53552,53008,45029,32651,35128,49671,46957,47521,44640,40028,29845,30174,45856,44504,43034,42667,42438,32349,30803,40232,31030,27070,35327,35889,27689,27923,37748,29264];
+
+        // November daily data (padded to 30 days)
+        const novDates = ['Nov 1','Nov 2','Nov 3','Nov 4','Nov 5','Nov 6','Nov 7','Nov 8','Nov 9','Nov 10','Nov 11','Nov 12','Nov 13','Nov 14','Nov 15','Nov 16','Nov 17','Nov 18','Nov 19','Nov 20','Nov 21','Nov 22','Nov 23','Nov 24','Nov 25','Nov 26','Nov 27','Nov 28','Nov 29','Nov 30'];
+        const novClicks = [248,126,190,451,456,447,446,332,122,222,447,474,438,394,306,121,210,469,454,425,440,332,115,189,445,414,398,277,215,103];
+        const novImpressions = [49543,37284,42166,57456,55294,55743,54710,49212,35769,39611,56480,59554,56485,55256,50784,39804,37418,57414,57921,60069,55240,50780,36949,39474,59314,54420,50134,44048,43960,35217];
+
+        // Clicks Chart
+        const clicksCtx = document.getElementById('clicksChart').getContext('2d');
+        new Chart(clicksCtx, {
+            type: 'line',
+            data: {
+                labels: decDates,
+                datasets: [{
+                    label: 'December 2025',
+                    data: decClicks,
+                    borderColor: '#01aac1',
+                    backgroundColor: 'rgba(1, 170, 193, 0.1)',
+                    fill: true,
+                    tension: 0.3,
+                    borderWidth: 2
+                }, {
+                    label: 'November 2025',
+                    data: [...novClicks, null], // Add null for day 31
+                    borderColor: '#ccc',
+                    backgroundColor: 'transparent',
+                    borderDash: [5, 5],
+                    tension: 0.3,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#eee'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 10
+                        }
+                    }
+                }
+            }
+        });
+
+        // Impressions Chart
+        const impressionsCtx = document.getElementById('impressionsChart').getContext('2d');
+        new Chart(impressionsCtx, {
+            type: 'line',
+            data: {
+                labels: decDates,
+                datasets: [{
+                    label: 'December 2025',
+                    data: decImpressions,
+                    borderColor: '#22c55e',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    fill: true,
+                    tension: 0.3,
+                    borderWidth: 2
+                }, {
+                    label: 'November 2025',
+                    data: [...novImpressions, null],
+                    borderColor: '#ccc',
+                    backgroundColor: 'transparent',
+                    borderDash: [5, 5],
+                    tension: 0.3,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#eee'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 10
+                        }
+                    }
+                }
+            }
+        });
+
+        // Segment Pie Chart
+        const segmentCtx = document.getElementById('segmentPieChart').getContext('2d');
+        new Chart(segmentCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Exact "gofreight"', 'Branded Related', 'Non-Branded'],
+                datasets: [{
+                    data: [1722, 1537, 465352],
+                    backgroundColor: ['#01aac1', '#01d7f4', '#22c55e'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    title: {
+                        display: true,
+                        text: 'December Impressions by Query Segment',
+                        font: {
+                            size: 14
+                        }
+                    }
+                }
+            }
+        });
+
+        // Clicks Waterfall Chart - showing contribution of each segment to the click change
+        const clicksWaterfallCtx = document.getElementById('clicksWaterfallChart').getContext('2d');
+        new Chart(clicksWaterfallCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Nov Total', 'Exact "gofreight"', 'Branded Related', 'Non-Branded', 'Dec Total'],
+                datasets: [{
+                    label: 'Clicks',
+                    data: [8421, -48, 17, -1082, 7308],
+                    backgroundColor: [
+                        '#64748b',  // Nov total - gray
+                        '#ef4444',  // Exact gofreight - red (negative)
+                        '#22c55e',  // Branded Related - green (positive)
+                        '#ef4444',  // Non-Branded - red (negative)
+                        '#01aac1'   // Dec total - primary blue
+                    ],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.raw;
+                                if (context.dataIndex === 0 || context.dataIndex === 4) {
+                                    return 'Total: ' + value.toLocaleString();
+                                }
+                                return 'Change: ' + (value > 0 ? '+' : '') + value.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { color: '#eee' },
+                        ticks: {
+                            callback: function(value) {
+                                if (value >= 1000) return (value/1000).toFixed(0) + 'K';
+                                return value;
+                            }
+                        }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // Impressions Waterfall Chart - showing contribution of each segment to impression change
+        const impressionsWaterfallCtx = document.getElementById('impressionsWaterfallChart').getContext('2d');
+        new Chart(impressionsWaterfallCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Nov Total', 'Exact "gofreight"', 'Branded Related', 'Non-Branded', 'Dec Total'],
+                datasets: [{
+                    label: 'Impressions',
+                    data: [1036497, -112, 37, 207543, 1243965],
+                    backgroundColor: [
+                        '#64748b',  // Nov total - gray
+                        '#ef4444',  // Exact gofreight - red (small negative)
+                        '#22c55e',  // Branded Related - green (positive)
+                        '#22c55e',  // Non-Branded - green (big positive!)
+                        '#01aac1'   // Dec total - primary blue
+                    ],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.raw;
+                                if (context.dataIndex === 0 || context.dataIndex === 4) {
+                                    return 'Total: ' + value.toLocaleString();
+                                }
+                                return 'Change: ' + (value > 0 ? '+' : '') + value.toLocaleString();
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { color: '#eee' },
+                        ticks: {
+                            callback: function(value) {
+                                if (value >= 1000000) return (value/1000000).toFixed(1) + 'M';
+                                if (value >= 1000) return (value/1000).toFixed(0) + 'K';
+                                return value;
+                            }
+                        }
+                    },
+                    y: {
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // Segment Comparison Bar Chart - Nov vs Dec by segment
+        const segmentComparisonCtx = document.getElementById('segmentComparisonChart').getContext('2d');
+        new Chart(segmentComparisonCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Exact "gofreight"', 'Branded Related', 'Non-Branded'],
+                datasets: [{
+                    label: 'November Clicks',
+                    data: [492, 145, 7784],
+                    backgroundColor: 'rgba(100, 116, 139, 0.7)',
+                    borderRadius: 4
+                }, {
+                    label: 'December Clicks',
+                    data: [444, 162, 6702],
+                    backgroundColor: 'rgba(1, 170, 193, 0.8)',
+                    borderRadius: 4
+                }, {
+                    label: 'November Impr (÷1000)',
+                    data: [1.8, 1.5, 258],
+                    backgroundColor: 'rgba(100, 116, 139, 0.3)',
+                    borderRadius: 4
+                }, {
+                    label: 'December Impr (÷1000)',
+                    data: [1.7, 1.5, 465],
+                    backgroundColor: 'rgba(34, 197, 94, 0.5)',
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 12,
+                            font: { size: 11 }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'November vs December by Query Segment',
+                        font: { size: 13, weight: 'bold' },
+                        color: '#333'
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { display: false }
+                    },
+                    y: {
+                        grid: { color: '#eee' },
+                        ticks: {
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Impression Gainers Horizontal Bar Chart
+        const impressionGainersCtx = document.getElementById('impressionGainersChart').getContext('2d');
+        new Chart(impressionGainersCtx, {
+            type: 'bar',
+            data: {
+                labels: [
+                    'Custom Clearance USA',
+                    'Ocean Import Solutions',
+                    'Homepage',
+                    'Container Tracking',
+                    'CPT Incoterms',
+                    'FOB Shipping Guide',
+                    'EXW Meaning',
+                    'Maher Terminal',
+                    'Training Courses'
+                ],
+                datasets: [{
+                    label: 'Impression Change',
+                    data: [18059, 6077, 5372, 3365, 3121, 2635, 2179, 2070, 721],
+                    backgroundColor: [
+                        '#22c55e', '#22c55e', '#01aac1', '#22c55e',
+                        '#22c55e', '#22c55e', '#22c55e', '#01d7f4', '#22c55e'
+                    ],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return '+' + context.raw.toLocaleString() + ' impressions';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: { color: '#eee' },
+                        ticks: {
+                            callback: function(value) {
+                                return '+' + (value/1000).toFixed(0) + 'K';
+                            }
+                        }
+                    },
+                    y: {
+                        grid: { display: false },
+                        ticks: {
+                            font: { size: 10 }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Content Type Pie Chart
+        const contentTypeCtx = document.getElementById('contentTypeChart').getContext('2d');
+        new Chart(contentTypeCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Education (+25K)', 'Product (+10K)', 'Terminal (+2K)', 'Brand (+5K)', 'Other (-15K)'],
+                datasets: [{
+                    data: [25000, 10000, 2000, 5000, -15000],
+                    backgroundColor: ['#22c55e', '#01aac1', '#01d7f4', '#8b5cf6', '#ef4444'],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 12,
+                            font: { size: 10 },
+                            padding: 10
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Net Impression Change by Content Type',
+                        font: { size: 12, weight: 'bold' }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const value = context.raw;
+                                return context.label + ': ' + (value > 0 ? '+' : '') + value.toLocaleString() + ' impr';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
