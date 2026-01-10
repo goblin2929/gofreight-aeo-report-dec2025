@@ -380,23 +380,23 @@
         <div class="kpi-grid">
             <div class="kpi-card">
                 <div class="kpi-label">Total Clicks</div>
-                <div class="kpi-value">7,308</div>
-                <div class="kpi-change negative">
-                    <span>&#9660;</span> -13.2% vs Nov
+                <div class="kpi-value">2,352</div>
+                <div class="kpi-change positive">
+                    <span>&#9650;</span> +4.4% vs Nov
                 </div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-label">Total Impressions</div>
-                <div class="kpi-value">1.2M</div>
+                <div class="kpi-value">469K</div>
                 <div class="kpi-change positive">
-                    <span>&#9650;</span> +20.0% vs Nov
+                    <span>&#9650;</span> +19.9% vs Nov
                 </div>
             </div>
             <div class="kpi-card">
                 <div class="kpi-label">Average CTR</div>
-                <div class="kpi-value">0.59%</div>
+                <div class="kpi-value">0.50%</div>
                 <div class="kpi-change negative">
-                    <span>&#9660;</span> -27.2% vs Nov
+                    <span>&#9660;</span> -12.9% vs Nov
                 </div>
             </div>
             <div class="kpi-card">
@@ -417,7 +417,7 @@
                 <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); padding: 25px; border-radius: 12px; margin-bottom: 25px; border-left: 4px solid var(--primary-blue);">
                     <h3 style="margin-bottom: 15px; color: var(--teal);">Month in Review</h3>
                     <p style="font-size: 1.05rem; color: #334155; line-height: 1.7;">
-                        <strong>Impressions +20% MoM</strong> — technical SEO fixes are driving visibility gains. HubSpot CMS migration nearly complete. 404 errors on archive.gofreight.com require immediate attention.
+                        <strong>Impressions +20% MoM, Clicks +4.4%</strong> — technical SEO fixes are driving visibility gains. HubSpot CMS migration nearly complete. 404 errors on archive.gofreight.com require immediate attention.
                     </p>
                 </div>
 
@@ -475,9 +475,9 @@
                         <h5 style="color: #166534; margin-bottom: 10px;">&#128994; /customers Pages Indexed</h5>
                         <p style="font-size: 0.9rem; color: #166534;">New customer case study pages already indexed and generating 518 impressions. Quick indexing indicates healthy site crawlability.</p>
                     </div>
-                    <div style="background: #fef3c7; padding: 20px; border-radius: 8px; border: 1px solid #fcd34d;">
-                        <h5 style="color: #92400e; margin-bottom: 10px;">&#128993; Monitor: Clicks -13%</h5>
-                        <p style="font-size: 0.9rem; color: #78350f;">Expected due to holiday seasonality and ranking for high-volume competitive terms with lower CTR. /solutions pages need CTR optimization.</p>
+                    <div style="background: #dcfce7; padding: 20px; border-radius: 8px; border: 1px solid #86efac;">
+                        <h5 style="color: #166534; margin-bottom: 10px;">&#128994; Clicks +4.4%</h5>
+                        <p style="font-size: 0.9rem; color: #166534;">Positive click growth alongside impression gains. CTR down slightly (-12.9%) as new high-volume keywords are ranking.</p>
                     </div>
                 </div>
 
@@ -598,8 +598,8 @@
                 </div>
 
                 <div class="insight-box">
-                    <h4>&#128161; Key Insight: The Click vs Impression Paradox</h4>
-                    <p style="margin-bottom: 15px;"><strong>Clicks dropped -13.2% while Impressions grew +20%.</strong> Here's why:</p>
+                    <h4>&#128161; Key Insight: Strong Growth Across Both Metrics</h4>
+                    <p style="margin-bottom: 15px;"><strong>Clicks grew +4.4% and Impressions grew +20%.</strong> Breakdown by segment:</p>
                     <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
                         <tr style="background: #f1f5f9;">
                             <th style="padding: 10px; text-align: left; border-bottom: 2px solid #e2e8f0;">Segment</th>
@@ -1793,13 +1793,13 @@
     <script>
         // December daily data
         const decDates = ['Dec 1','Dec 2','Dec 3','Dec 4','Dec 5','Dec 6','Dec 7','Dec 8','Dec 9','Dec 10','Dec 11','Dec 12','Dec 13','Dec 14','Dec 15','Dec 16','Dec 17','Dec 18','Dec 19','Dec 20','Dec 21','Dec 22','Dec 23','Dec 24','Dec 25','Dec 26','Dec 27','Dec 28','Dec 29','Dec 30','Dec 31'];
-        const decClicks = [191,428,460,369,343,279,99,149,343,310,353,312,231,78,153,361,363,320,280,224,87,142,242,154,107,204,191,101,133,239,122];
-        const decImpressions = [36660,53538,51710,53552,53008,45029,32651,35128,49671,46957,47521,44640,40028,29845,30174,45856,44504,43034,42667,42438,32349,30803,40232,31030,27070,35327,35889,27689,27923,37748,29264];
+        const decClicks = [84,132,144,106,90,34,36,104,104,127,101,90,32,52,110,111,90,85,63,16,45,82,88,47,25,59,34,33,92,81,55];
+        const decImpressions = [17191,17990,17917,18337,16411,10751,12444,19818,18767,18998,17790,16603,11129,12653,17639,18662,15147,16356,15165,11187,12945,17023,16185,12704,11529,11955,9672,11844,15946,16039,11814];
 
         // November daily data (padded to 30 days)
         const novDates = ['Nov 1','Nov 2','Nov 3','Nov 4','Nov 5','Nov 6','Nov 7','Nov 8','Nov 9','Nov 10','Nov 11','Nov 12','Nov 13','Nov 14','Nov 15','Nov 16','Nov 17','Nov 18','Nov 19','Nov 20','Nov 21','Nov 22','Nov 23','Nov 24','Nov 25','Nov 26','Nov 27','Nov 28','Nov 29','Nov 30'];
-        const novClicks = [248,126,190,451,456,447,446,332,122,222,447,474,438,394,306,121,210,469,454,425,440,332,115,189,445,414,398,277,215,103];
-        const novImpressions = [49543,37284,42166,57456,55294,55743,54710,49212,35769,39611,56480,59554,56485,55256,50784,39804,37418,57414,57921,60069,55240,50780,36949,39474,59314,54420,50134,44048,43960,35217];
+        const novClicks = [23,54,96,94,107,95,81,42,41,109,81,98,91,87,37,52,114,108,91,83,73,26,49,133,109,92,60,55,33,38];
+        const novImpressions = [8762,10775,15696,14776,14660,14196,13251,8965,9626,15287,14368,14705,14693,12499,10086,10275,14723,15880,17617,15782,12146,9392,10930,16140,16691,15769,13057,11512,8785,9903];
 
         // Segment Pie Chart
         const segmentCtx = document.getElementById('segmentPieChart').getContext('2d');
@@ -1808,7 +1808,7 @@
             data: {
                 labels: ['Exact "gofreight"', 'Branded Related', 'Non-Branded'],
                 datasets: [{
-                    data: [1722, 1537, 465352],
+                    data: [1722, 1454, 465435],
                     backgroundColor: ['#01aac1', '#01d7f4', '#22c55e'],
                     borderWidth: 0
                 }]
@@ -1838,12 +1838,12 @@
                 labels: ['Nov Total', 'Exact "gofreight"', 'Branded Related', 'Non-Branded', 'Dec Total'],
                 datasets: [{
                     label: 'Clicks',
-                    data: [8421, -48, 17, -1082, 7308],
+                    data: [2252, 20, 15, 65, 2352],
                     backgroundColor: [
                         '#64748b',  // Nov total - gray
-                        '#ef4444',  // Exact gofreight - red (negative)
+                        '#22c55e',  // Exact gofreight - green (positive)
                         '#22c55e',  // Branded Related - green (positive)
-                        '#ef4444',  // Non-Branded - red (negative)
+                        '#22c55e',  // Non-Branded - green (positive)
                         '#01aac1'   // Dec total - primary blue
                     ],
                     borderRadius: 4
@@ -1894,10 +1894,10 @@
                 labels: ['Nov Total', 'Exact "gofreight"', 'Branded Related', 'Non-Branded', 'Dec Total'],
                 datasets: [{
                     label: 'Impressions',
-                    data: [1036497, -112, 37, 207543, 1243965],
+                    data: [390947, 100, 50, 77514, 468611],
                     backgroundColor: [
                         '#64748b',  // Nov total - gray
-                        '#ef4444',  // Exact gofreight - red (small negative)
+                        '#22c55e',  // Exact gofreight - green (positive)
                         '#22c55e',  // Branded Related - green (positive)
                         '#22c55e',  // Non-Branded - green (big positive!)
                         '#01aac1'   // Dec total - primary blue
