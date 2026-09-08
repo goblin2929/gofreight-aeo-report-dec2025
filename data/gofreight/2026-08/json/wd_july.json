@@ -1,0 +1,1380 @@
+{
+  "weekly_visibility": {
+    "2026-W27": {
+      "ChatGPT": 21.4,
+      "Perplexity": 30.0,
+      "Google AI": 39.7
+    },
+    "2026-W28": {
+      "ChatGPT": 20.4,
+      "Perplexity": 32.1,
+      "Google AI": 41.3
+    },
+    "2026-W29": {
+      "ChatGPT": 23.0,
+      "Perplexity": 32.1,
+      "Google AI": 39.8
+    },
+    "2026-W30": {
+      "ChatGPT": 17.9,
+      "Perplexity": 32.1,
+      "Google AI": 38.7
+    },
+    "2026-W31": {
+      "ChatGPT": 20.4,
+      "Perplexity": 24.5,
+      "Google AI": 22.3
+    },
+    "2026-W32": {
+      "ChatGPT": 15.8,
+      "Perplexity": 24.5,
+      "Google AI": 24.3
+    },
+    "2026-W33": {
+      "ChatGPT": 25.5,
+      "Perplexity": 29.6,
+      "Google AI": 19.5
+    },
+    "2026-W34": {
+      "ChatGPT": 26.0,
+      "Perplexity": 34.2,
+      "Google AI": 24.6
+    },
+    "2026-W35": {
+      "ChatGPT": 33.7,
+      "Perplexity": 39.3,
+      "Google AI": 40.9
+    },
+    "2026-W36": {
+      "ChatGPT": 42.9,
+      "Perplexity": 32.1,
+      "Google AI": 40.0
+    }
+  },
+  "monthly_visibility_nonbrand": {
+    "2026-07": 29.3,
+    "2026-08": 28.0
+  },
+  "monthly_sov_nonbrand": {
+    "2026-07": 12.9,
+    "2026-08": 12.0
+  },
+  "monthly_brand_mentions": {
+    "2026-07": 1757,
+    "2026-08": 1720
+  },
+  "monthly_response_counts": {
+    "2026-07": 3563,
+    "2026-08": 3567
+  },
+  "pages": [
+    {
+      "url": "https://gofreight.com/blog/gofreight-platform-overview",
+      "subfolder": "Blog",
+      "jul": 579,
+      "jun": 743
+    },
+    {
+      "url": "https://gofreight.com/blog/best-tms-software",
+      "subfolder": "Blog",
+      "jul": 478,
+      "jun": 551
+    },
+    {
+      "url": "https://gofreight.com/blog/cargowise-vs-gofreight",
+      "subfolder": "Blog",
+      "jul": 445,
+      "jun": 626
+    },
+    {
+      "url": "https://gofreight.com/blog/best-freight-management-software",
+      "subfolder": "Blog",
+      "jul": 373,
+      "jun": 587
+    },
+    {
+      "url": "https://gofreight.com/blog/nvocc-software-top-solutions",
+      "subfolder": "Blog",
+      "jul": 321,
+      "jun": 317
+    },
+    {
+      "url": "https://gofreight.com/blog/cargowise-alternative",
+      "subfolder": "Blog",
+      "jul": 320,
+      "jun": 385
+    },
+    {
+      "url": "https://gofreight.com/blog/solution/blog-customer-portal.html",
+      "subfolder": "Blog",
+      "jul": 280,
+      "jun": 96
+    },
+    {
+      "url": "https://gofreight.com/",
+      "subfolder": "Homepage",
+      "jul": 261,
+      "jun": 128
+    },
+    {
+      "url": "https://gofreight.com/blog/gofreight-reviews-testimonials",
+      "subfolder": "Blog",
+      "jul": 248,
+      "jun": 316
+    },
+    {
+      "url": "https://gofreight.com/product/integrations",
+      "subfolder": "Product",
+      "jul": 232,
+      "jun": 387
+    },
+    {
+      "url": "https://gofreight.com",
+      "subfolder": "Homepage",
+      "jul": 230,
+      "jun": 10
+    },
+    {
+      "url": "https://gofreight.com/blog/gofreight-vs-magaya",
+      "subfolder": "Blog",
+      "jul": 217,
+      "jun": 369
+    },
+    {
+      "url": "https://gofreight.com/product/customer-portal",
+      "subfolder": "Product",
+      "jul": 168,
+      "jun": 93
+    },
+    {
+      "url": "https://gofreight.com/service-level-agreement",
+      "subfolder": "Other",
+      "jul": 133,
+      "jun": 202
+    },
+    {
+      "url": "https://developers.gofreight.com",
+      "subfolder": "Other",
+      "jul": 131,
+      "jun": 36
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-tracking-software-comparison",
+      "subfolder": "Blog",
+      "jul": 129,
+      "jun": 153
+    },
+    {
+      "url": "https://gofreight.com/blog/tms-software-guide",
+      "subfolder": "Blog",
+      "jul": 114,
+      "jun": 104
+    },
+    {
+      "url": "https://gofreight.com/product/workflow-automation",
+      "subfolder": "Product",
+      "jul": 113,
+      "jun": 192
+    },
+    {
+      "url": "https://gofreight.com/blog/best-logistics-crm-software",
+      "subfolder": "Blog",
+      "jul": 108,
+      "jun": 112
+    },
+    {
+      "url": "https://gofreight.com/product/freight-billing-accounting",
+      "subfolder": "Product",
+      "jul": 107,
+      "jun": 103
+    },
+    {
+      "url": "https://gofreight.com/blog/gofreight-vs-descartes",
+      "subfolder": "Blog",
+      "jul": 99,
+      "jun": 133
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us",
+      "subfolder": "Support",
+      "jul": 94,
+      "jun": 13
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/categories/6375773605263-gofreight-guides",
+      "subfolder": "Support",
+      "jul": 88,
+      "jun": 8
+    },
+    {
+      "url": "https://gofreight.com/blog/best-warehouse-management-systems-for-freight-operations",
+      "subfolder": "Blog",
+      "jul": 87,
+      "jun": 40
+    },
+    {
+      "url": "https://developers.gofreight.com/docs/api",
+      "subfolder": "Other",
+      "jul": 87,
+      "jun": 47
+    },
+    {
+      "url": "https://gofreight.com/blog/cargowise-pricing-2025",
+      "subfolder": "Blog",
+      "jul": 85,
+      "jun": 81
+    },
+    {
+      "url": "https://gofreight.com/blog/best-tms-small-business",
+      "subfolder": "Blog",
+      "jul": 83,
+      "jun": 114
+    },
+    {
+      "url": "https://gofreight.com/blog/multi-modal-freight-software",
+      "subfolder": "Blog",
+      "jul": 80,
+      "jun": 15
+    },
+    {
+      "url": "https://developers.gofreight.com/docs/api/quickstart",
+      "subfolder": "Other",
+      "jul": 79,
+      "jun": 24
+    },
+    {
+      "url": "https://developers.gofreight.com/docs/api/more-examples",
+      "subfolder": "Other",
+      "jul": 77,
+      "jun": 56
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-software-audit-trail",
+      "subfolder": "Blog",
+      "jul": 75,
+      "jun": 15
+    },
+    {
+      "url": "https://gofreight.com/blog/switch-from-cargowise",
+      "subfolder": "Blog",
+      "jul": 70,
+      "jun": 93
+    },
+    {
+      "url": "https://gofreight.com/knowledge/gofreight-quickbooks-accounting-integration-getting-started-user-guide",
+      "subfolder": "Other",
+      "jul": 68,
+      "jun": 55
+    },
+    {
+      "url": "https://gofreight.com/customers",
+      "subfolder": "Other",
+      "jul": 67,
+      "jun": 20
+    },
+    {
+      "url": "https://document.gofreight.com",
+      "subfolder": "Other",
+      "jul": 63,
+      "jun": 20
+    },
+    {
+      "url": "https://gofreight.com/blog/transparent-freight-software-pricing",
+      "subfolder": "Blog",
+      "jul": 62,
+      "jun": 50
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-logistics-analytics-tools-kpis-and-best-practices",
+      "subfolder": "Blog",
+      "jul": 62,
+      "jun": 39
+    },
+    {
+      "url": "https://gofreight.com/customers/transmodal-group",
+      "subfolder": "Other",
+      "jul": 61,
+      "jun": 91
+    },
+    {
+      "url": "https://gofreight.com/blog/best-freight-customer-portal-software",
+      "subfolder": "Blog",
+      "jul": 53,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/magaya-alternatives",
+      "subfolder": "Blog",
+      "jul": 50,
+      "jun": 110
+    },
+    {
+      "url": "https://gofreight.com/blog/solution/unveiling-logistics-technology-trends-in-supply-chain-management.html",
+      "subfolder": "Blog",
+      "jul": 47,
+      "jun": 6
+    },
+    {
+      "url": "https://gofreight.com/blog/general/blog-forwading-management-software-as-service.html",
+      "subfolder": "Blog",
+      "jul": 46,
+      "jun": 73
+    },
+    {
+      "url": "https://gofreight.com/blog/reduce-customs-penalties",
+      "subfolder": "Blog",
+      "jul": 44,
+      "jun": 10
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-forwarder-tech-stack",
+      "subfolder": "Blog",
+      "jul": 42,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/what-is-nvocc",
+      "subfolder": "Blog",
+      "jul": 40,
+      "jun": 30
+    },
+    {
+      "url": "https://gofreight.com/blog/general/what-is-freight-forwarding-and-how-does-it-work.html",
+      "subfolder": "Blog",
+      "jul": 39,
+      "jun": 143
+    },
+    {
+      "url": "https://gofreight.com/blog/education/end-to-end-shipment-management",
+      "subfolder": "Blog",
+      "jul": 36,
+      "jun": 50
+    },
+    {
+      "url": "https://gofreight.com/why-gofreight",
+      "subfolder": "Other",
+      "jul": 35,
+      "jun": 54
+    },
+    {
+      "url": "https://gofreight.com/solutions/ocean-freight",
+      "subfolder": "Solutions",
+      "jul": 35,
+      "jun": 42
+    },
+    {
+      "url": "https://developers.gofreight.com/docs/api/use-cases/agent-shipment-submission",
+      "subfolder": "Other",
+      "jul": 34,
+      "jun": 37
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-forwarder-bi-kpis",
+      "subfolder": "Blog",
+      "jul": 34,
+      "jun": 7
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-management-software-api-capabilities",
+      "subfolder": "Blog",
+      "jul": 34,
+      "jun": 0
+    },
+    {
+      "url": "https://api.gofreight.com",
+      "subfolder": "API",
+      "jul": 33,
+      "jun": 59
+    },
+    {
+      "url": "https://gofreight.com/blog/education/how-to-apply-for-nvocc-license.html",
+      "subfolder": "Blog",
+      "jul": 33,
+      "jun": 16
+    },
+    {
+      "url": "https://developers.gofreight.com/docs/api/tutorial",
+      "subfolder": "Other",
+      "jul": 32,
+      "jun": 16
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-software-rail-intermodal-terminal-operators",
+      "subfolder": "Blog",
+      "jul": 31,
+      "jun": 11
+    },
+    {
+      "url": "https://gofreight.com/terms-of-service",
+      "subfolder": "Other",
+      "jul": 31,
+      "jun": 16
+    },
+    {
+      "url": "https://gofreight.com/blog/founders-insight/unlocking-success-in-freight-forwarding-essential-kpis-to-keep-you-ahead.html",
+      "subfolder": "Blog",
+      "jul": 31,
+      "jun": 38
+    },
+    {
+      "url": "https://gofreight.com/blog/solution/how-to-impress-your-customers-through-your-freight-logistics-software.html",
+      "subfolder": "Blog",
+      "jul": 31,
+      "jun": 7
+    },
+    {
+      "url": "https://gofreight.com/blog/industry-insights/reducing-detention-demurrage-fees.html",
+      "subfolder": "Blog",
+      "jul": 30,
+      "jun": 36
+    },
+    {
+      "url": "https://gofreight.com/blog/detention-demurrage-tms-savings",
+      "subfolder": "Blog",
+      "jul": 30,
+      "jun": 0
+    },
+    {
+      "url": "https://developers.gofreight.com/docs/api/tutorial/retrieve-shipment-refs",
+      "subfolder": "Other",
+      "jul": 29,
+      "jun": 10
+    },
+    {
+      "url": "https://gofreight.com/customers/global-gateway",
+      "subfolder": "Other",
+      "jul": 28,
+      "jun": 36
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/sections/6452818360591-basic",
+      "subfolder": "Support",
+      "jul": 28,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/magaya-migration-guide",
+      "subfolder": "Blog",
+      "jul": 27,
+      "jun": 21
+    },
+    {
+      "url": "https://gofreight.com/blog/founders-insight/how-gofreight-became-the-modern-technology-freight-forwarders-need-today.html",
+      "subfolder": "Blog",
+      "jul": 27,
+      "jun": 10
+    },
+    {
+      "url": "https://gofreight.com/blog/solution/how-can-freight-forwarders-and-nvoccs-lower-costs-and-increase-operational-efficiencies-with-gofreight.html",
+      "subfolder": "Blog",
+      "jul": 27,
+      "jun": 11
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-software-for-mac",
+      "subfolder": "Blog",
+      "jul": 26,
+      "jun": 14
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/articles/11933197549455-getting-started-with-gofreight-tracking",
+      "subfolder": "Support",
+      "jul": 25,
+      "jun": 6
+    },
+    {
+      "url": "https://gofreight.com/blog/best-customs-brokerage-software",
+      "subfolder": "Blog",
+      "jul": 24,
+      "jun": 0
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/sections/6455087968655-accounting",
+      "subfolder": "Support",
+      "jul": 22,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/knowledge/gofreight-api-faq",
+      "subfolder": "Other",
+      "jul": 21,
+      "jun": 17
+    },
+    {
+      "url": "https://developers.gofreight.com/docs/api/tutorial/manage-trade-partners",
+      "subfolder": "Other",
+      "jul": 20,
+      "jun": 9
+    },
+    {
+      "url": "https://gofreight.com/blog/tms-vs-wms",
+      "subfolder": "Blog",
+      "jul": 20,
+      "jun": 0
+    },
+    {
+      "url": "https://developers.gofreight.com/docs/webhooks/using_webhooks",
+      "subfolder": "Other",
+      "jul": 19,
+      "jun": 12
+    },
+    {
+      "url": "https://gofreight.com/blog/education/what-are-the-best-ways-for-freight-forwarders-to-save-demurrage-and-detention-fees.html",
+      "subfolder": "Blog",
+      "jul": 19,
+      "jun": 20
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/articles/10527832910223-gofreight-quickbooks-accounting-integration-getting-started-user-guide",
+      "subfolder": "Support",
+      "jul": 19,
+      "jun": 33
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-workflow-automation",
+      "subfolder": "Blog",
+      "jul": 19,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/air-freight-software-solutions",
+      "subfolder": "Blog",
+      "jul": 18,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/solutions/air-freight",
+      "subfolder": "Solutions",
+      "jul": 17,
+      "jun": 26
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/sections/7233917268239-security-filing",
+      "subfolder": "Support",
+      "jul": 17,
+      "jun": 0
+    },
+    {
+      "url": "https://archive.gofreight.com",
+      "subfolder": "Archive",
+      "jul": 16,
+      "jun": 7
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-software-migration-guide",
+      "subfolder": "Blog",
+      "jul": 16,
+      "jun": 13
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/articles/6631019393551-how-to-apply-for-esi-with-gofreight",
+      "subfolder": "Support",
+      "jul": 16,
+      "jun": 0
+    },
+    {
+      "url": "https://www.gofreight.com/resources/case-study/whale-us",
+      "subfolder": "Other",
+      "jul": 15,
+      "jun": 9
+    },
+    {
+      "url": "https://gofreight.com/pricing",
+      "subfolder": "Pricing",
+      "jul": 14,
+      "jun": 6
+    },
+    {
+      "url": "https://gofreight.com/webinars/elevating-customer-experience-in-freight",
+      "subfolder": "Other",
+      "jul": 14,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/knowledge",
+      "subfolder": "Other",
+      "jul": 13,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/descartes-alternatives",
+      "subfolder": "Blog",
+      "jul": 12,
+      "jun": 95
+    },
+    {
+      "url": "https://gofreight.com/freight-forwarding-software",
+      "subfolder": "Solutions",
+      "jul": 12,
+      "jun": 11
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-workflow-management",
+      "subfolder": "Blog",
+      "jul": 12,
+      "jun": 7
+    },
+    {
+      "url": "https://gofreight.com/blog/7-day-freight-software-implementation",
+      "subfolder": "Blog",
+      "jul": 12,
+      "jun": 13
+    },
+    {
+      "url": "https://gofreight.com/blog/ocean-freight-management-software",
+      "subfolder": "Blog",
+      "jul": 12,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/product/shipment-tracking-operations",
+      "subfolder": "Product",
+      "jul": 11,
+      "jun": 24
+    },
+    {
+      "url": "https://gofreight.com/blog/education/why-does-your-freight-forwarding-business-need-workflow-automation.html",
+      "subfolder": "Blog",
+      "jul": 11,
+      "jun": 12
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/related/click",
+      "subfolder": "Support",
+      "jul": 11,
+      "jun": 6
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/sections/6461477703439-lesson-4-ocean-export-training",
+      "subfolder": "Support",
+      "jul": 11,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/customers/allround-forwarding",
+      "subfolder": "Other",
+      "jul": 10,
+      "jun": 6
+    },
+    {
+      "url": "https://developers.gofreight.com/docs",
+      "subfolder": "Other",
+      "jul": 10,
+      "jun": 4
+    },
+    {
+      "url": "https://gofreight.com/product/freight-analytics",
+      "subfolder": "Product",
+      "jul": 10,
+      "jun": 3
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/articles/6811503691279-welcome-to-the-gofreight-knowledge-center",
+      "subfolder": "Support",
+      "jul": 10,
+      "jun": 6
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/articles/11933072561167-how-to-effectively-manage-cargo-status-using-my-containers",
+      "subfolder": "Support",
+      "jul": 10,
+      "jun": 3
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/articles/6695722979215-how-to-use-the-to-do-list-on-the-dashboard-in-gofreight",
+      "subfolder": "Support",
+      "jul": 8,
+      "jun": 3
+    },
+    {
+      "url": "https://developers.gofreight.com/docs/api/troubleshooting",
+      "subfolder": "Other",
+      "jul": 8,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/customers/united-cargo-management",
+      "subfolder": "Other",
+      "jul": 7,
+      "jun": 3
+    },
+    {
+      "url": "https://www.trustpilot.com/review/www.uscargofreight.com",
+      "subfolder": "Other",
+      "jul": 7,
+      "jun": 6
+    },
+    {
+      "url": "https://archive.gofreight.com/testimonials",
+      "subfolder": "Archive",
+      "jul": 7,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/blog/general/features-you-should-look-for-in-a-freight-logistics-software-system.html",
+      "subfolder": "Blog",
+      "jul": 6,
+      "jun": 2
+    },
+    {
+      "url": "https://gofreight.com/customers/gc-logistics",
+      "subfolder": "Other",
+      "jul": 6,
+      "jun": 7
+    },
+    {
+      "url": "https://gofreight.com/blog/what-is-tms-1",
+      "subfolder": "Blog",
+      "jul": 6,
+      "jun": 8
+    },
+    {
+      "url": "https://gofreight.com/knowledge/gofreight-guides",
+      "subfolder": "Other",
+      "jul": 6,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/solutions/pain-points",
+      "subfolder": "Solutions",
+      "jul": 5,
+      "jun": 15
+    },
+    {
+      "url": "https://gofreight.com/blog/general/digital-freight-forwarder.html",
+      "subfolder": "Blog",
+      "jul": 5,
+      "jun": 11
+    },
+    {
+      "url": "https://gofreight.com/company",
+      "subfolder": "Other",
+      "jul": 5,
+      "jun": 6
+    },
+    {
+      "url": "https://gofreight.com/blog/industry-insights/the-ultimate-guide-to-freight-forwarders.html",
+      "subfolder": "Blog",
+      "jul": 5,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-payment-software-guide",
+      "subfolder": "Blog",
+      "jul": 5,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/glossary/what-is-tms",
+      "subfolder": "Glossary",
+      "jul": 4,
+      "jun": 28
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/articles/9767374655119-lesson-15-1-how-to-set-up-qbo-adaptor-for-the-first-time",
+      "subfolder": "Support",
+      "jul": 4,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/blog/industry-insights/freight-forwarding-technology-is-it-worth-the-cost-to-adopt-new-technologies.html",
+      "subfolder": "Blog",
+      "jul": 4,
+      "jun": 18
+    },
+    {
+      "url": "https://gofreight.com/knowledge/how-to-ams-faq",
+      "subfolder": "Other",
+      "jul": 4,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/knowledge/welcome-to-the-gofreight-knowledge-center",
+      "subfolder": "Other",
+      "jul": 4,
+      "jun": 2
+    },
+    {
+      "url": "https://gofreight.com/customers/tg-cargo-inc",
+      "subfolder": "Other",
+      "jul": 4,
+      "jun": 6
+    },
+    {
+      "url": "https://www.gofreight.com/who-we-serve/united-states",
+      "subfolder": "Other",
+      "jul": 4,
+      "jun": 3
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/articles/6730726661263-how-to-generate-the-agent-local-statement",
+      "subfolder": "Support",
+      "jul": 4,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-forwarding-industry-outlook",
+      "subfolder": "Blog",
+      "jul": 4,
+      "jun": 0
+    },
+    {
+      "url": "https://archive.gofreight.com/container-tracking-data-feed",
+      "subfolder": "Archive",
+      "jul": 3,
+      "jun": 1
+    },
+    {
+      "url": "https://developers.gofreight.com/docs/api/use-cases/digitize-invoice-via-ocr",
+      "subfolder": "Other",
+      "jul": 3,
+      "jun": 5
+    },
+    {
+      "url": "https://gofreight.com/blog/solution/how-having-an-excellent-accounting-module-in-your-freight-forwarding-software-helps-your-business.html",
+      "subfolder": "Blog",
+      "jul": 3,
+      "jun": 13
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-software-quickbooks-integration",
+      "subfolder": "Blog",
+      "jul": 3,
+      "jun": 6
+    },
+    {
+      "url": "https://gofreight.com/product/customs-management",
+      "subfolder": "Product",
+      "jul": 3,
+      "jun": 4
+    },
+    {
+      "url": "https://gofreight.com/blog/case-study-multi-regional-forwarder",
+      "subfolder": "Blog",
+      "jul": 3,
+      "jun": 11
+    },
+    {
+      "url": "https://archive.gofreight.com/tracking-portal",
+      "subfolder": "Archive",
+      "jul": 3,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/solutions/ocean-import",
+      "subfolder": "Solutions",
+      "jul": 3,
+      "jun": 3
+    },
+    {
+      "url": "https://archive.gofreight.com/who-we-serve/accounting-manager",
+      "subfolder": "Archive",
+      "jul": 3,
+      "jun": 2
+    },
+    {
+      "url": "https://gofreight.com/customers/seamax-freight-international",
+      "subfolder": "Other",
+      "jul": 3,
+      "jun": 3
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/articles/6811836924303-how-to-generate-a-volume-and-profit-report",
+      "subfolder": "Support",
+      "jul": 3,
+      "jun": 0
+    },
+    {
+      "url": "https://www.gofreight.com/data-sheet/quickbooks-integration",
+      "subfolder": "Other",
+      "jul": 3,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/industry-insights/finding-the-right-freight-forwarding-software.html",
+      "subfolder": "Blog",
+      "jul": 3,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/fms",
+      "subfolder": "Other",
+      "jul": 3,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/general/blog-freight-forwarding-best-practice.html",
+      "subfolder": "Blog",
+      "jul": 2,
+      "jun": 7
+    },
+    {
+      "url": "https://developers.gofreight.com/docs/custom_fields",
+      "subfolder": "Other",
+      "jul": 2,
+      "jun": 3
+    },
+    {
+      "url": "https://gofreight.com/blog/solution/how-a-powerful-invoicing-function-in-your-freight-forwarding-software-helps-your-business.html",
+      "subfolder": "Blog",
+      "jul": 2,
+      "jun": 9
+    },
+    {
+      "url": "https://gofreight.com/gofreight-software-as-a-service-agreement-sh",
+      "subfolder": "Other",
+      "jul": 2,
+      "jun": 9
+    },
+    {
+      "url": "https://gofreight.com/blog/best-tms-trucking-companies",
+      "subfolder": "Blog",
+      "jul": 2,
+      "jun": 3
+    },
+    {
+      "url": "https://gofreight.com/solutions/air-import",
+      "subfolder": "Solutions",
+      "jul": 2,
+      "jun": 2
+    },
+    {
+      "url": "https://gofreight.com/customers/headwin-logistics",
+      "subfolder": "Other",
+      "jul": 2,
+      "jun": 7
+    },
+    {
+      "url": "https://www.gofreight.com/resources/case-study/casestudy-gclogistics",
+      "subfolder": "Other",
+      "jul": 2,
+      "jun": 7
+    },
+    {
+      "url": "https://www.gofreight.com/resources/case-study/casestudy-ucm-ppc",
+      "subfolder": "Other",
+      "jul": 2,
+      "jun": 8
+    },
+    {
+      "url": "https://gofreight.com/customers/straight-forwarding-inc",
+      "subfolder": "Other",
+      "jul": 2,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/blog/education/build-vs-buy-freight-forwarding-software",
+      "subfolder": "Blog",
+      "jul": 2,
+      "jun": 7
+    },
+    {
+      "url": "https://gofreight.com/solutions/ocean-export",
+      "subfolder": "Solutions",
+      "jul": 2,
+      "jun": 0
+    },
+    {
+      "url": "https://developers.gofreight.com/docs/webhooks/securing_webhooks",
+      "subfolder": "Other",
+      "jul": 2,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-software-prevents-duplicate-bl-wrong-entries",
+      "subfolder": "Blog",
+      "jul": 2,
+      "jun": 0
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/sections/9767325105295-lesson-15-quickbooks-integration",
+      "subfolder": "Support",
+      "jul": 2,
+      "jun": 0
+    },
+    {
+      "url": "https://uscargofreight.com/reviews",
+      "subfolder": "Other",
+      "jul": 2,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/logistics-planning-guide",
+      "subfolder": "Blog",
+      "jul": 2,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/freights-snap/global-top-freight-forwarders",
+      "subfolder": "Blog",
+      "jul": 1,
+      "jun": 2
+    },
+    {
+      "url": "https://gofreight.com/blog/freights-snap/detention-and-demurrage-charges.html",
+      "subfolder": "Blog",
+      "jul": 1,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/blog/cargo-management-software",
+      "subfolder": "Blog",
+      "jul": 1,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/knowledge/how-to-import-contracts-into-gofreight",
+      "subfolder": "Other",
+      "jul": 1,
+      "jun": 1
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/articles/12285794078607-how-to-generate-delivery-orders-and-other-air-import-documents-in-gofreight",
+      "subfolder": "Support",
+      "jul": 1,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/blog/solution/supply-chain-optimization-what-is-it-best-practices.html",
+      "subfolder": "Blog",
+      "jul": 1,
+      "jun": 1
+    },
+    {
+      "url": "https://www.gofreight.com/who-we-serve/accounting-manager",
+      "subfolder": "Other",
+      "jul": 1,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/customers/csl-express-line",
+      "subfolder": "Other",
+      "jul": 1,
+      "jun": 5
+    },
+    {
+      "url": "https://gofreight.com/customers/whale-logistics-usa",
+      "subfolder": "Other",
+      "jul": 1,
+      "jun": 9
+    },
+    {
+      "url": "https://gofreight.com/knowledge/how-to-apply-isf-and-ams-in-gofreight",
+      "subfolder": "Other",
+      "jul": 1,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/knowledge/cross-office-journal-entry-guide-for-multi-office-environments",
+      "subfolder": "Other",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://developers.gofreight.com/docs/edi_315",
+      "subfolder": "Other",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog",
+      "subfolder": "Blog",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/knowledge/try-our-easy-search-find-your-answers-instantly-in-our-knowledge-center",
+      "subfolder": "Other",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/education/quote-faster-win-more-speed-to-lead",
+      "subfolder": "Blog",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/product/rate-management-quoting",
+      "subfolder": "Product",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://archive.gofreight.com/pricing",
+      "subfolder": "Archive",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/general/how-do-freight-forwarders-work-from-home.html",
+      "subfolder": "Blog",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/industry-insights/10-ways-freight-forwarders-can-boost-efficiency-and-productivity.html",
+      "subfolder": "Blog",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/articles/16019603393807-quick-guide-extracting-freight-codes-analyzing-profits",
+      "subfolder": "Support",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://www.gofreight.com/solutions/quotation",
+      "subfolder": "Solutions",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/industry-insights/optimizing-with-warehouse-management-system-software.html",
+      "subfolder": "Blog",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://archive.gofreight.com/blog/customer-story/how-do-you-compete-with-larger-forwarders-with-more-resources.html",
+      "subfolder": "Archive",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/wcapartner",
+      "subfolder": "Other",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/articles/12210476249743-how-to-generate-shipping-instructions-for-ocean-export",
+      "subfolder": "Support",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/knowledge/getting-started-with-gofreight-tracking",
+      "subfolder": "Other",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/founders-insight/nurturing-customer-loyalty-how-large-freight-forwarders-can-utilize-po-management-software-to-enhance-client-relations.html",
+      "subfolder": "Blog",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/education/top-freight-forwarding-industry-news-websites-to-follow",
+      "subfolder": "Blog",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/solutions/air-export",
+      "subfolder": "Solutions",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/general/earn-more-with-more-by-joining-the-best-freight-forwarder-networks.html",
+      "subfolder": "Blog",
+      "jul": 1,
+      "jun": 0
+    },
+    {
+      "url": "https://gofreight.com/blog/solution/complete-guide-aes",
+      "subfolder": "Blog",
+      "jul": 0,
+      "jun": 3
+    },
+    {
+      "url": "https://archive.gofreight.com/solutions/container-tracking",
+      "subfolder": "Archive",
+      "jul": 0,
+      "jun": 8
+    },
+    {
+      "url": "https://gofreight.com/knowledge/how-to-generate-a-freight-statement-in-gofreight",
+      "subfolder": "Other",
+      "jul": 0,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/blog/education/how-to-do-custom-clearance-in-usa-for-goods.html",
+      "subfolder": "Blog",
+      "jul": 0,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/knowledge/quickbooks-online-integration-faq",
+      "subfolder": "Other",
+      "jul": 0,
+      "jun": 2
+    },
+    {
+      "url": "https://archive.gofreight.com/solutions/accounting-solutions",
+      "subfolder": "Archive",
+      "jul": 0,
+      "jun": 1
+    },
+    {
+      "url": "https://support.gofreight.com/hc/en-us/articles/11214584576911-how-to-import-contracts-into-gofreight",
+      "subfolder": "Support",
+      "jul": 0,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/blog/cargowise-hidden-fees",
+      "subfolder": "Blog",
+      "jul": 0,
+      "jun": 8
+    },
+    {
+      "url": "https://gofreight.com/blog/founders-insight/why-a-modern-saas-is-necessary-for-any-freight-forwarder-to-grow.html",
+      "subfolder": "Blog",
+      "jul": 0,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/blog/shipment-tracking-software-features",
+      "subfolder": "Blog",
+      "jul": 0,
+      "jun": 16
+    },
+    {
+      "url": "https://gofreight.com/blog/freight-software-evaluation-checklist",
+      "subfolder": "Blog",
+      "jul": 0,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/blog/general/customer-relationship-management-in-logistics.html",
+      "subfolder": "Blog",
+      "jul": 0,
+      "jun": 2
+    },
+    {
+      "url": "https://www.gofreight.com/tracking-portal",
+      "subfolder": "Other",
+      "jul": 0,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/blog/education/3-ways-technology-assist-with-freight-forwarding-risk-mitigation.html",
+      "subfolder": "Blog",
+      "jul": 0,
+      "jun": 1
+    },
+    {
+      "url": "https://archive.gofreight.com/freight-forwarding-software",
+      "subfolder": "Archive",
+      "jul": 0,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/blog/education/freight-forwarding-software-warning-signs",
+      "subfolder": "Blog",
+      "jul": 0,
+      "jun": 2
+    },
+    {
+      "url": "https://gofreight.com/blog/modern-freight-operations",
+      "subfolder": "Blog",
+      "jul": 0,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/blog/education/5-sales-strategies-for-freight-forwarding-company.html",
+      "subfolder": "Blog",
+      "jul": 0,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/customers/tg-cargo-logistics",
+      "subfolder": "Other",
+      "jul": 0,
+      "jun": 1
+    },
+    {
+      "url": "https://gofreight.com/customers/whale-us",
+      "subfolder": "Other",
+      "jul": 0,
+      "jun": 1
+    }
+  ],
+  "subfolder_rollup": {
+    "Homepage": {
+      "jul_pages": 2,
+      "jun_pages": 2,
+      "jul_cit": 491,
+      "jun_cit": 138
+    },
+    "Blog": {
+      "jul_pages": 82,
+      "jun_pages": 71,
+      "jul_cit": 5319,
+      "jun_cit": 5830
+    },
+    "Glossary": {
+      "jul_pages": 1,
+      "jun_pages": 1,
+      "jul_cit": 4,
+      "jun_cit": 28
+    },
+    "Solutions": {
+      "jul_pages": 9,
+      "jun_pages": 6,
+      "jul_cit": 78,
+      "jun_cit": 99
+    },
+    "Product": {
+      "jul_pages": 8,
+      "jun_pages": 7,
+      "jul_cit": 645,
+      "jun_cit": 806
+    },
+    "Pricing": {
+      "jul_pages": 1,
+      "jun_pages": 1,
+      "jul_cit": 14,
+      "jun_cit": 6
+    },
+    "Support": {
+      "jul_pages": 20,
+      "jun_pages": 11,
+      "jul_cit": 375,
+      "jun_cit": 81
+    },
+    "API": {
+      "jul_pages": 1,
+      "jun_pages": 1,
+      "jul_cit": 33,
+      "jun_cit": 59
+    },
+    "Archive": {
+      "jul_pages": 7,
+      "jun_pages": 8,
+      "jul_cit": 34,
+      "jun_cit": 22
+    },
+    "Other": {
+      "jul_pages": 55,
+      "jun_pages": 48,
+      "jul_cit": 1170,
+      "jun_cit": 878
+    }
+  },
+  "totals": {
+    "jul_total_cit": 8163,
+    "jun_total_cit": 7947,
+    "jul_pages": 186,
+    "jun_pages": 156,
+    "jul_total_cit_primary": 7721,
+    "jun_total_cit_primary": 7785,
+    "jul_pages_primary": 158,
+    "jun_pages_primary": 136
+  }
+}

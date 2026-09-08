@@ -1,0 +1,1080 @@
+{
+  "sources": [
+    {
+      "source": "perplexity",
+      "jun": 6,
+      "jul": 4,
+      "delta": -2
+    },
+    {
+      "source": "business.gemini.google",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "source": "peekyou.com",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "source": "perplexity.ai",
+      "jun": 14,
+      "jul": 15,
+      "delta": 1
+    },
+    {
+      "source": "copilot.com",
+      "jun": 8,
+      "jul": 11,
+      "delta": 3
+    },
+    {
+      "source": "claude.ai",
+      "jun": 42,
+      "jul": 50,
+      "delta": 8
+    },
+    {
+      "source": "gemini.google.com",
+      "jun": 68,
+      "jul": 104,
+      "delta": 36
+    },
+    {
+      "source": "chatgpt.com",
+      "jun": 251,
+      "jul": 394,
+      "delta": 143
+    }
+  ],
+  "landingPages": [
+    {
+      "page": "/blog/maritime-disruption",
+      "jun": 14,
+      "jul": 2,
+      "delta": -12
+    },
+    {
+      "page": "/glossary/what-is-the-gross-margin-of-freight-forwarders.html",
+      "jun": 9,
+      "jul": 3,
+      "delta": -6
+    },
+    {
+      "page": "/blog/education/top-freight-forwarding-training-courses",
+      "jun": 8,
+      "jul": 4,
+      "delta": -4
+    },
+    {
+      "page": "/blog/top-logistics-technology-trends",
+      "jun": 4,
+      "jul": 0,
+      "delta": -4
+    },
+    {
+      "page": "/glossary/container-freight-station-cfs",
+      "jun": 4,
+      "jul": 0,
+      "delta": -4
+    },
+    {
+      "page": "/blog/freights-snap/global-top-freight-forwarders",
+      "jun": 10,
+      "jul": 7,
+      "delta": -3
+    },
+    {
+      "page": "/knowledge/gofreight-guides",
+      "jun": 5,
+      "jul": 2,
+      "delta": -3
+    },
+    {
+      "page": "/get-demo",
+      "jun": 7,
+      "jul": 4,
+      "delta": -3
+    },
+    {
+      "page": "/knowledge/how-to-create-a-booking-in-ocean-export",
+      "jun": 3,
+      "jul": 0,
+      "delta": -3
+    },
+    {
+      "page": "/knowledge/how-to-file-ebooking-in-gofreight-booking-request/-esi/-evgm",
+      "jun": 3,
+      "jul": 0,
+      "delta": -3
+    },
+    {
+      "page": "/blog/education/top-freight-forwarding-industry-news-websites-to-follow",
+      "jun": 8,
+      "jul": 6,
+      "delta": -2
+    },
+    {
+      "page": "/blog/best-tms-software",
+      "jun": 3,
+      "jul": 1,
+      "delta": -2
+    },
+    {
+      "page": "/blog/education/how-to-start-a-freight-forwarding-business-in-the-us.html",
+      "jun": 2,
+      "jul": 0,
+      "delta": -2
+    },
+    {
+      "page": "/blog/education/peak-season-logistics-calendar-2026",
+      "jun": 3,
+      "jul": 1,
+      "delta": -2
+    },
+    {
+      "page": "/glossary/savannah-terminal-tracking",
+      "jun": 3,
+      "jul": 1,
+      "delta": -2
+    },
+    {
+      "page": "/blog/best-tms-trucking-companies",
+      "jun": 6,
+      "jul": 5,
+      "delta": -1
+    },
+    {
+      "page": "/blog/education/quote-faster-win-more-speed-to-lead",
+      "jun": 4,
+      "jul": 3,
+      "delta": -1
+    },
+    {
+      "page": "/container-tracking",
+      "jun": 3,
+      "jul": 2,
+      "delta": -1
+    },
+    {
+      "page": "/blog/freight-forwarding-industry-outlook",
+      "jun": 3,
+      "jul": 2,
+      "delta": -1
+    },
+    {
+      "page": "/blog/largest-ocean-carriers",
+      "jun": 5,
+      "jul": 4,
+      "delta": -1
+    },
+    {
+      "page": "/glossary/customs-clearance",
+      "jun": 2,
+      "jul": 1,
+      "delta": -1
+    },
+    {
+      "page": "/glossary/everything-freight-forwarders-need-know-about-eawb.html",
+      "jun": 3,
+      "jul": 2,
+      "delta": -1
+    },
+    {
+      "page": "/blog/container-loss-at-sea",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/customs-clearance-timeline",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/descartes-alternatives",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/education/buyer-pays-freight-costs-unraveling-fca-incoterms",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/freight-workflow-management",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/general/blog-forwading-management-software-as-service.html",
+      "jun": 2,
+      "jul": 1,
+      "delta": -1
+    },
+    {
+      "page": "/blog/general/blog-freight-forwarding-best-practice.html",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/general/what-is-freight-forwarding-and-how-does-it-work.html",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/gofreight-reviews-testimonials",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/how-to-reduce-freight-costs",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/industry-insights/freight-rates-and-the-current-freight-market.html",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/port-strikes-freight",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/shipping-to-middle-east",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/temperature-controlled-freight",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/transparent-freight-software-pricing",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/customers/headwin-logistics",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/customers/tg-cargo-inc",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/demo",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/glossary/cfr-incoterm",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/glossary/ectn-electronic-cargo-tracking-note",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/glossary/garden-city-terminal-tracking",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/glossary/isf-filing-software-guide",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/glossary/understanding-cpt-meaning-in-incoterms.html",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/glossary/wando-terminal-tracking",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/glossary/what-is-co-loading-freight.html",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/knowledge/check-bond-status-importer-bond-details-overview",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/knowledge/how-to-create-accounts-payable-ap-invoices-in-invoice-mode",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/knowledge/how-to-generate-a-manifest-in-gofreight",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/knowledge/how-to-send-emails-weekly-automatically-in-the-aging-report-to-your-team",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/knowledge/how-to-submit-ams-filing-via-efreight",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/knowledge/how-to-use-aesdirect-in-the-gofreight-system",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/knowledge/how-to-use-the-complete-shipment-function-in-gofreight",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/knowledge/how-to-use-the-document-package-feature-for-air-export-documents",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/knowledge/lesson-1-1-1-dashboard",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/knowledge/lesson-4-10-1-pre-alert",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/knowledge/lesson-7-2-1-make-receive-payment",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/product/customs-management",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/sailing-schedule",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/solutions/ocean-freight",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/solutions/ocean-import",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/solutions/pain-points",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/track-and-trace",
+      "jun": 1,
+      "jul": 0,
+      "delta": -1
+    },
+    {
+      "page": "/blog/education/shipping-container-dimensions-everything-you-need-to-know.html",
+      "jun": 8,
+      "jul": 8,
+      "delta": 0
+    },
+    {
+      "page": "/blog/education/digital-marketing-strategy-for-freight-forwarding-company.html",
+      "jun": 6,
+      "jul": 6,
+      "delta": 0
+    },
+    {
+      "page": "/blog/education/5-sales-strategies-for-freight-forwarding-company.html",
+      "jun": 5,
+      "jul": 5,
+      "delta": 0
+    },
+    {
+      "page": "/blog/general/earn-more-with-more-by-joining-the-best-freight-forwarder-networks.html",
+      "jun": 3,
+      "jul": 3,
+      "delta": 0
+    },
+    {
+      "page": "/blog/freight-tracking-software-comparison",
+      "jun": 1,
+      "jul": 1,
+      "delta": 0
+    },
+    {
+      "page": "/blog/freights-snap/is-it-true-dsv-to-become-the-worlds-largest-forwarder.html",
+      "jun": 2,
+      "jul": 2,
+      "delta": 0
+    },
+    {
+      "page": "/financing",
+      "jun": 1,
+      "jul": 1,
+      "delta": 0
+    },
+    {
+      "page": "/glossary/electronic-bill-of-lading",
+      "jun": 2,
+      "jul": 2,
+      "delta": 0
+    },
+    {
+      "page": "/knowledge/lesson-4-6-1-shipping-instruction",
+      "jun": 1,
+      "jul": 1,
+      "delta": 0
+    },
+    {
+      "page": "/blog/freight-forwarding-business-development",
+      "jun": 4,
+      "jul": 5,
+      "delta": 1
+    },
+    {
+      "page": "/blog/cargowise-pricing-2025",
+      "jun": 4,
+      "jul": 5,
+      "delta": 1
+    },
+    {
+      "page": "/blog/best-logistics-crm-software",
+      "jun": 2,
+      "jul": 3,
+      "delta": 1
+    },
+    {
+      "page": "/blog/digital-freight-brokerage",
+      "jun": 1,
+      "jul": 2,
+      "delta": 1
+    },
+    {
+      "page": "/blog/education/how-to-do-custom-clearance-in-usa-for-goods.html",
+      "jun": 3,
+      "jul": 4,
+      "delta": 1
+    },
+    {
+      "page": "/blog/industry-insights/shipping-forecasting.html",
+      "jun": 1,
+      "jul": 2,
+      "delta": 1
+    },
+    {
+      "page": "/blog/nvocc-software-top-solutions",
+      "jun": 1,
+      "jul": 2,
+      "delta": 1
+    },
+    {
+      "page": "/glossary/what-is-incoterms",
+      "jun": 1,
+      "jul": 2,
+      "delta": 1
+    },
+    {
+      "page": "/product/shipment-tracking-operations",
+      "jun": 1,
+      "jul": 2,
+      "delta": 1
+    },
+    {
+      "page": "/solutions/air-freight",
+      "jun": 1,
+      "jul": 2,
+      "delta": 1
+    },
+    {
+      "page": "/blog/best-tms-small-business",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/best-warehouse-management-systems-for-freight-operations",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/business-case-replace-freight-software",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/detention-demurrage-tms-savings",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/education/a-guide-to-verified-gross-mass-vgm.html",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/education/understanding-ex-works-in-international-trade.html",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/education/unpacking-the-telex-release-in-shipping.html",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/founders-insight/how-gofreight-became-the-modern-technology-freight-forwarders-need-today.html",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/founders-insight/strategies-to-scale-your-small-and-medium-freight-forwarding-business-and-achieve-sustainable-growth.html",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/freight-forwarder-bi-kpis",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/h2-2026-ocean-freight-forecast",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/multi-modal-freight-software",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/shipping-from-china-to-usa",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/shipping-from-india-to-usa",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/solution/complete-guide-aes",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/customers",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/discover-quotation",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/glossary/bayport-container-terminal",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/glossary/everything-freight-forwarders-need-to-know-about-the-electronic-cargo-tracking-note.html",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/glossary/ics2",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/glossary/logistics-service-tiers",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/glossary/terminal-handling-charges-thc",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/glossary/understanding-cost-and-freight-cfr.html",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/customer-prepayments-recording-deposits-as-liabilities-g-l-method",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/getting-started-with-gofreight-tracking",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/gofreight-quickbooks-accounting-integration-getting-started-user-guide",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/how-to-create-a-billing-code",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/how-to-create-a-new-payment-on-payment-received-list",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/how-to-create-a-new-shipment-in-air-import",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/how-to-generate-a-booking-confirmation-for-ocean-export-shipments",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/how-to-generate-a-journal-report-in-gofreight",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/how-to-generate-an-atme-for-air-import-shipments-to-the-us",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/how-to-generate-the-agent-local-statement",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/how-to-link-a-full-quantity-of-warehouse-items-to-a-specific-shipment",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/how-to-properly-trigger-tracking-edi-for-real-time-shipment-updates",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/how-to-quickly-review-shipment-status-in-house-b-l-list",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/how-to-update-status-requirements-in-the-customer-portal",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/how-to-use-the-to-do-list-on-the-dashboard-in-gofreight",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/lesson-1-2-3-mbl-hbl-my-shipment",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/lesson-6-5-1-attaching-warehouse-to-shipment",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/knowledge/tracking-portal-ocean-shipment-entry",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/newsletter",
+      "jun": 0,
+      "jul": 1,
+      "delta": 1
+    },
+    {
+      "page": "/blog/gofreight-platform-overview",
+      "jun": 17,
+      "jul": 19,
+      "delta": 2
+    },
+    {
+      "page": "/company",
+      "jun": 3,
+      "jul": 5,
+      "delta": 2
+    },
+    {
+      "page": "/blog/cargowise-alternative",
+      "jun": 3,
+      "jul": 5,
+      "delta": 2
+    },
+    {
+      "page": "/product/integrations",
+      "jun": 3,
+      "jul": 5,
+      "delta": 2
+    },
+    {
+      "page": "/blog/generative-ai-freight-forwarding",
+      "jun": 1,
+      "jul": 3,
+      "delta": 2
+    },
+    {
+      "page": "/knowledge/getting-started",
+      "jun": 1,
+      "jul": 3,
+      "delta": 2
+    },
+    {
+      "page": "/blog/all",
+      "jun": 0,
+      "jul": 2,
+      "delta": 2
+    },
+    {
+      "page": "/blog/ectn-requirements-by-country-complete-guide-for-shippers",
+      "jun": 0,
+      "jul": 2,
+      "delta": 2
+    },
+    {
+      "page": "/blog/education/how-to-sell-freight-forwarding-services.html",
+      "jun": 0,
+      "jul": 2,
+      "delta": 2
+    },
+    {
+      "page": "/blog/solution/blog-customer-portal.html",
+      "jun": 0,
+      "jul": 2,
+      "delta": 2
+    },
+    {
+      "page": "/customers/whale-logistics-usa",
+      "jun": 0,
+      "jul": 2,
+      "delta": 2
+    },
+    {
+      "page": "/glossary/bill-of-lading",
+      "jun": 0,
+      "jul": 2,
+      "delta": 2
+    },
+    {
+      "page": "/knowledge/how-to-file-aci/emanifest-in-gofreight",
+      "jun": 0,
+      "jul": 2,
+      "delta": 2
+    },
+    {
+      "page": "/knowledge/how-to-import-shipments-into-gofreight-for-status-tracking",
+      "jun": 0,
+      "jul": 2,
+      "delta": 2
+    },
+    {
+      "page": "/knowledge/how-to-submit-ams-filing-via-crimsonlogic",
+      "jun": 0,
+      "jul": 2,
+      "delta": 2
+    },
+    {
+      "page": "/blog/air-cargo-digitalization",
+      "jun": 0,
+      "jul": 2,
+      "delta": 2
+    },
+    {
+      "page": "/blog/carrier-peak-season-surcharges",
+      "jun": 0,
+      "jul": 2,
+      "delta": 2
+    },
+    {
+      "page": "/blog/customs-clearance-status-codes",
+      "jun": 0,
+      "jul": 2,
+      "delta": 2
+    },
+    {
+      "page": "/blog/industry-insights/mastering-fob-in-shipping-a-complete-guide.html",
+      "jun": 0,
+      "jul": 2,
+      "delta": 2
+    },
+    {
+      "page": "/blog/education/what-is-the-profit-margin-for-freight-forwarders.html",
+      "jun": 9,
+      "jul": 12,
+      "delta": 3
+    },
+    {
+      "page": "/blog/education/10-best-books-on-freight-forwarding-to-read.html",
+      "jun": 3,
+      "jul": 6,
+      "delta": 3
+    },
+    {
+      "page": "/product/freight-billing-accounting",
+      "jun": 2,
+      "jul": 5,
+      "delta": 3
+    },
+    {
+      "page": "/blog/industry-insights/your-ultimate-guide-to-commercial-invoice-customs-costs.html",
+      "jun": 1,
+      "jul": 4,
+      "delta": 3
+    },
+    {
+      "page": "/knowledge/welcome-to-the-gofreight-knowledge-center",
+      "jun": 1,
+      "jul": 4,
+      "delta": 3
+    },
+    {
+      "page": "/blog/cargowise-vs-gofreight",
+      "jun": 0,
+      "jul": 3,
+      "delta": 3
+    },
+    {
+      "page": "/knowledge/how-to-configure-the-to-do-list-in-gofreight",
+      "jun": 0,
+      "jul": 3,
+      "delta": 3
+    },
+    {
+      "page": "/knowledge/how-to-file-afr-in-gofreight",
+      "jun": 0,
+      "jul": 3,
+      "delta": 3
+    },
+    {
+      "page": "/terms-of-service",
+      "jun": 0,
+      "jul": 3,
+      "delta": 3
+    },
+    {
+      "page": "/blog/freight-logistics-analytics-tools-kpis-and-best-practices",
+      "jun": 1,
+      "jul": 5,
+      "delta": 4
+    },
+    {
+      "page": "/go-get-demo-ppc",
+      "jun": 0,
+      "jul": 4,
+      "delta": 4
+    },
+    {
+      "page": "/blog/best-freight-management-software",
+      "jun": 0,
+      "jul": 4,
+      "delta": 4
+    },
+    {
+      "page": "/glossary/air-waybill.html",
+      "jun": 0,
+      "jul": 4,
+      "delta": 4
+    },
+    {
+      "page": "/knowledge",
+      "jun": 0,
+      "jul": 4,
+      "delta": 4
+    },
+    {
+      "page": "/blog/education/how-to-apply-for-nvocc-license.html",
+      "jun": 3,
+      "jul": 8,
+      "delta": 5
+    },
+    {
+      "page": "/glossary/scfi",
+      "jun": 0,
+      "jul": 5,
+      "delta": 5
+    },
+    {
+      "page": "/why-gofreight",
+      "jun": 0,
+      "jul": 5,
+      "delta": 5
+    },
+    {
+      "page": "/blog/industry-insights/top-10-reasons-of-shipping-delays.html",
+      "jun": 0,
+      "jul": 5,
+      "delta": 5
+    },
+    {
+      "page": "/product/rate-management-quoting",
+      "jun": 5,
+      "jul": 11,
+      "delta": 6
+    },
+    {
+      "page": "/blog/supply-chain-forecasting-methods",
+      "jun": 2,
+      "jul": 8,
+      "delta": 6
+    },
+    {
+      "page": "/product/customer-portal",
+      "jun": 2,
+      "jul": 8,
+      "delta": 6
+    },
+    {
+      "page": "/blog/freight-giants-dsv-chrobinson-expeditors-kuehnenagel-q22026-earnings-reports",
+      "jun": 0,
+      "jul": 6,
+      "delta": 6
+    },
+    {
+      "page": "/freight-forwarding-software",
+      "jun": 1,
+      "jul": 8,
+      "delta": 7
+    },
+    {
+      "page": "/glossary/ocean-carrier-alliances",
+      "jun": 2,
+      "jul": 9,
+      "delta": 7
+    },
+    {
+      "page": "/pricing",
+      "jun": 8,
+      "jul": 16,
+      "delta": 8
+    },
+    {
+      "page": "(not set)",
+      "jun": 54,
+      "jul": 84,
+      "delta": 30
+    },
+    {
+      "page": "/",
+      "jun": 66,
+      "jul": 124,
+      "delta": 58
+    }
+  ]
+}
