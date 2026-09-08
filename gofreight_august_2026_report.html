@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AEO Monthly Report — GoFreight — August 2026</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root { --teal:#017d8e; --teal-d:#0e7490; --slate-9:#0f172a; --slate-7:#334155; --slate-5:#64748b; --slate-3:#cbd5e1; --slate-1:#f1f5f9; --green:#16a34a; --amber:#d97706; --red:#dc2626; }
+  * { box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',system-ui,sans-serif; background:#fff; color:var(--slate-9); margin:0; padding:28px 36px; font-size:13.5px; line-height:1.45; }
+  .page { width:1280px; margin:0 auto; }
+  html { min-width:1320px; }
+  header { border-bottom:2px solid var(--teal); padding-bottom:12px; margin-bottom:18px; display:flex; justify-content:space-between; align-items:flex-end; }
+  header h1 { font-size:22px; margin:0; color:var(--slate-9); letter-spacing:-0.01em; }
+  header .meta { font-size:12px; color:var(--slate-5); text-align:right; }
+  header .meta strong { color:var(--slate-7); }
+  .hook { background:linear-gradient(90deg,#ecfeff 0%,#f0fdfa 100%); border-left:4px solid var(--teal); padding:12px 16px; border-radius:4px; margin-bottom:18px; font-size:14px; }
+  .hook strong { color:var(--teal-d); }
+  .kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:16px; }
+  .kpi { border:1px solid var(--slate-3); border-radius:6px; padding:10px 14px; background:#fff; }
+  .kpi .label { font-size:11px; color:var(--slate-5); text-transform:uppercase; letter-spacing:0.04em; }
+  .kpi .val { font-size:20px; font-weight:700; color:var(--slate-9); margin-top:2px; }
+  .kpi .delta { font-size:12px; margin-top:2px; }
+  .delta.up { color:var(--green); } .delta.down { color:var(--red); } .delta.flat { color:var(--amber); }
+  .chart-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:22px; }
+  .chart-card { border:1px solid var(--slate-3); border-radius:6px; padding:12px 14px 10px; background:#fff; }
+  .chart-card h3 { font-size:13px; margin:0 0 2px; color:var(--slate-9); }
+  .chart-card .sub { font-size:11px; color:var(--slate-5); margin-bottom:8px; }
+  .chart-canvas-wrap { height:200px; position:relative; }
+  .chart-card .takeaway { margin-top:8px; font-size:11.5px; color:var(--slate-7); background:var(--slate-1); padding:6px 8px; border-radius:4px; }
+  .chart-card .takeaway b { color:var(--slate-9); }
+  section { margin-bottom:22px; }
+  section h2 { font-size:13px; margin:0 0 8px; color:var(--teal-d); text-transform:uppercase; letter-spacing:0.06em; border-bottom:1px solid var(--slate-3); padding-bottom:4px; }
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  table.t { width:100%; border-collapse:collapse; font-size:12px; background:#fff; }
+  table.t th { text-align:left; font-size:10.5px; text-transform:uppercase; letter-spacing:0.04em; color:var(--slate-5); border-bottom:1.5px solid var(--slate-3); padding:5px 8px; font-weight:600; }
+  table.t th.num, table.t td.num { text-align:right; font-variant-numeric:tabular-nums; }
+  table.t th.aeo, table.t td.aeo { background:#ecfeff; }
+  table.t th.aeo { color:var(--teal-d); }
+  table.t td { padding:5px 8px; border-bottom:1px solid var(--slate-1); color:var(--slate-7); }
+  table.t td:first-child { color:var(--slate-9); }
+  table.t tr.subtotal td { background:var(--slate-1); font-weight:700; color:var(--slate-9); border-top:1.5px solid var(--slate-3); }
+  table.t a { color:var(--teal-d); text-decoration:none; }
+  table.t a:hover { text-decoration:underline; }
+  .up { color:var(--green); } .down { color:var(--red); }
+  .win-row td { background:#f0fdf4; }
+  .note { font-size:11px; color:var(--slate-5); margin-top:6px; }
+  .takeaway-box { margin-top:8px; font-size:11.5px; color:var(--slate-7); background:var(--slate-1); padding:8px 10px; border-radius:4px; }
+  .takeaway-box b { color:var(--slate-9); }
+  .takeaway-box.win { background:#f0fdf4; border-left:3px solid var(--green); }
+  .takeaway-box.watch { background:#fffbeb; border-left:3px solid var(--amber); }
+  .takeaway-box ul { margin:4px 0 0; padding-left:18px; } .takeaway-box li { margin-bottom:3px; }
+  .focus-status { font-weight:700; font-size:11px; } .focus-status.done { color:var(--green); }
+  .prio-list { margin:0; padding-left:20px; } .prio-list li { margin-bottom:6px; font-size:12.5px; } .prio-list li b { color:var(--teal-d); }
+  .tag { display:inline-block; font-size:9.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; padding:1px 6px; border-radius:8px; margin-left:6px; vertical-align:middle; }
+  .tag.aeo { background:#ecfeff; color:var(--teal-d); border:1px solid #a5f3fc; }
+  .tag.content { background:#f0fdf4; color:var(--green); border:1px solid #bbf7d0; }
+  .tag.technical { background:#fffbeb; color:var(--amber); border:1px solid #fde68a; }
+  .tag.product { background:#eef2ff; color:#4338ca; border:1px solid #c7d2fe; }
+  footer { margin-top:16px; font-size:10.5px; color:var(--slate-5); text-align:center; border-top:1px solid var(--slate-3); padding-top:6px; }
+  @media print { body { padding:16px 20px; font-size:11.5px; } .chart-canvas-wrap { height:160px; } header h1 { font-size:18px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div>
+      <h1>AEO Monthly Report — August 2026</h1>
+      <div style="font-size:11px; color:var(--slate-5); margin-top:2px;">August vs July 2026 monthly review · GoFreight ↔ Novastacks</div>
+    </div>
+    <div class="meta">
+      <div><strong>September 9, 2026</strong></div>
+      <div>Monthly tables: Aug 1–31 vs Jul 1–31 · Weekly trends: Jan 5 – Aug 24</div>
+      <div>GSC filtered to gofreight.com (support / api / archive subdomains excluded)</div>
+    </div>
+  </header>
+
+  <div class="hook">
+    <strong>Headline:</strong> August extended the growth run — total clicks <strong>+21.0% (7,734)</strong>, non-brand <strong>+25.4% (6,631, now 85.7% of all clicks)</strong>, and impressions <strong>+21.1% (1.51M)</strong>. The standout: <strong>AI-referred sessions rebounded +47.7% (392 → 579)</strong>, with <strong>ChatGPT recovering strongly (251 → 394)</strong> — July’s pullback reversed, confirming it was a temporary platform change, not a GoFreight problem. Every AI engine grew. AI visibility held roughly steady (<strong>29.3% → 28.0%</strong>) and AI citations edged up (<strong>7,947 → 8,163</strong>) across a wider page set (156 → 186 pages).
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi"><div class="label">Total Clicks · August</div><div class="val">7,734</div>
+      <div class="delta up">+1,344 (+21.0%) vs July · Non-brand 6,631 (85.7%)</div></div>
+    <div class="kpi"><div class="label">Non-Brand Clicks · August</div><div class="val">6,631</div>
+      <div class="delta up">+1,344 (+25.4%) MoM</div></div>
+    <div class="kpi"><div class="label">AI Sessions · August (GA4)</div><div class="val">579</div>
+      <div class="delta up">+47.7% vs July 392 · ChatGPT rebounded</div></div>
+    <div class="kpi"><div class="label">AI Visibility · August (WorkDuo)</div><div class="val">28.0%</div>
+      <div class="delta down">−1.3 pts vs July · citations +2.7% (7,947 → 8,163)</div></div>
+  </div>
+
+  <div class="chart-row">
+    <div class="chart-card">
+      <h3>① Total Clicks vs Non-Brand Clicks (Weekly)</h3>
+      <div class="sub">GSC gofreight.com, date-dim · non-brand = total minus brand-regex queries</div>
+      <div class="chart-canvas-wrap"><canvas id="chart1"></canvas></div>
+      <div class="takeaway"><b>Read:</b> Non-brand clicks kept climbing — August delivered <b>6,631 non-brand clicks (+25.4% MoM)</b> and non-brand share reached <b>85.7% of total</b>, up from 82.7% in July. Impressions also grew +21% — the content program keeps compounding on the informational long-tail.</div>
+    </div>
+    <div class="chart-card">
+      <h3>② AEO Visibility · Non-Brand by Engine (Weekly)</h3>
+      <div class="sub">WorkDuo · 28 non-brand prompts (MOFU/TOFU/BOFU); self-mention rate per engine</div>
+      <div class="chart-canvas-wrap"><canvas id="chart2"></canvas></div>
+      <div class="takeaway"><b>Read:</b> <b>Google AI Overview stayed in the high-30s band</b> through August, recovering from the late-July dip. Blended non-brand visibility settled at <b>28.0% for August</b> (from 29.3% in July) — roughly steady. Perplexity and ChatGPT held their mid-range; the panel is stable after the mid-2026 platform shake-out.</div>
+    </div>
+    <div class="chart-card">
+      <h3>③ AI Traffic Sessions (Weekly · GA4)</h3>
+      <div class="sub">GA4 property 373075091, sessionSource matching AI platforms (chatgpt, perplexity, gemini, claude, copilot…)</div>
+      <div class="chart-canvas-wrap"><canvas id="chart3"></canvas></div>
+      <div class="takeaway"><b>Read:</b> AI sessions <b>rebounded sharply in August — 579 vs July’s 392 (+47.7%)</b>, a series high. <b>ChatGPT recovered (251 → 394)</b> as its July pullback reversed, and every other engine grew too (Gemini, Claude, Perplexity). The July dip was a temporary platform effect, now normalized (see the deep-dive below).</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <section>
+      <h2>August — What Was Done</h2>
+      <table class="t">
+        <thead><tr><th>#</th><th>Initiative</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td class="num">1</td><td><b>Buyer-question content enhancements</b> — added focused single-question sections + FAQ to the pages AI engines cite, closing the content gaps mapped in July (implementation timeline, scalability, real-time visibility, accounting, etc.).</td><td><span class="focus-status done">DONE</span></td></tr>
+          <tr><td class="num">2</td><td><b>Published 30 new articles</b> — August blog cadence (BAU).</td><td><span class="focus-status done">DONE</span></td></tr>
+          <tr><td class="num">3</td><td><b>New title experiment on /solutions/air-freight &amp; /solutions/ocean-freight</b> (~Aug 20) — <b>ocean-freight impressions rose ~19%/day</b> after the change, surfacing for strong software queries (“sea freight export software” ~pos 5, “ocean freight software”, “air freight import software” ~pos 5). Air-freight steady. Early read — impressions are trend-sensitive, so we keep watching.</td><td><span class="focus-status done">DONE</span></td></tr>
+          <tr><td class="num">4</td><td><b>Structured data updated for /solutions/air-freight &amp; /solutions/ocean-freight</b> — richer schema for better rich-result and AI extraction.</td><td><span class="focus-status done">DONE</span></td></tr>
+          <tr><td class="num">5</td><td><b>Fixed the footer link bug on /solutions/air-export</b> — restored the internal link.</td><td><span class="focus-status done">DONE</span></td></tr>
+          <tr><td class="num">6</td><td><b>llms.txt updated</b> — refreshed the AI-crawler manifest exposing key content to LLMs.</td><td><span class="focus-status done">DONE</span></td></tr>
+        </tbody>
+      </table>
+      <div class="takeaway-box" style="margin-top:10px;"><b>Effect visible in the data:</b> Glossary clicks +61.1% and Blog +10.4% MoM; non-brand share climbed 82.7% → 85.7%; AI-referred sessions rebounded +47.7% (392 → 579) and AI citations edged up across a wider page set (156 → 186 pages).</div>
+    </section>
+
+    <section>
+      <h2>September 2026 — Next Action Items &amp; Priorities</h2>
+      <ol class="prio-list">
+        <li><b>Blog publishing — September</b> — keep expanding the topics where GoFreight is <b>not yet visible in AI Overview &amp; ChatGPT</b>, and add coverage for <b>popular terminal queries</b> to capture that traffic. <a href="https://docs.google.com/spreadsheets/d/1D7MDm4_4HpuIfjUe2CBTYat2AoTWRFLK2XgGBI8gpUc/edit?gid=1223294981#gid=1223294981" target="_blank">September plan</a>.<span class="tag content">Content</span><span class="tag aeo">AEO</span></li>
+        <li><b>Improve the Solution &amp; Product pages</b> — execute the on-page improvements. <a href="https://docs.google.com/document/d/1i9skfgqCa3SLx_nbfiao5p_Z1o7GDsAJ_sgHP89eoPE/edit?tab=t.0" target="_blank">Plan</a>.<span class="tag product">Product</span><span class="tag aeo">AEO</span></li>
+        <li><b>SEO × SEM collaboration</b> — identify the best opportunity keywords so SEM can spend budget / CPC where it converts best.<span class="tag technical">SEM</span></li>
+        <li><b>[Experimental] “Preferred Sources” button on the blog</b> — invite readers to add GoFreight as a <a href="https://developers.google.com/search/docs/appearance/preferred-sources" target="_blank">Google preferred source</a> so new posts surface in their Discover/Chrome feed.<span class="tag technical">Technical</span><span class="tag aeo">AEO</span></li>
+        <li><b>Newsletter-registration strategy</b> — propose a plan to grow newsletter sign-ups, supporting GoFreight’s September event.<span class="tag content">Growth</span></li>
+      </ol>
+      <div class="takeaway-box watch" style="margin-top:12px;"><b>Watch:</b> AI visibility eased slightly (−1.3pp) and primary-domain citations were roughly flat while the page set widened — the September plan targets the not-yet-visible AIO / ChatGPT queries directly. Also re-check the air/ocean title experiment in 4–6 weeks once more impression data accrues.</div>
+    </section>
+  </div>
+
+  <section>
+    <h2>Query Segment Breakdown (August vs July)</h2>
+    <table class="t"><thead>
+      <tr><th>Segment</th><th class="num">July Clicks</th><th class="num">August Clicks</th><th class="num">Click Δ</th><th class="num">Δ %</th><th class="num">July Impr</th><th class="num">August Impr</th><th class="num">Impr Δ</th></tr>
+    </thead><tbody>
+      <tr><td>Exact "gofreight"</td><td class="num">932</td><td class="num">922</td><td class="num down">-10</td><td class="num down">-1.1%</td><td class="num">2,393</td><td class="num">2,234</td><td class="num down">-159</td></tr>
+<tr><td>Branded related</td><td class="num">171</td><td class="num">181</td><td class="num up">+10</td><td class="num up">+5.8%</td><td class="num">3,462</td><td class="num">5,429</td><td class="num up">+1,967</td></tr>
+<tr><td>Non-branded</td><td class="num">5,287</td><td class="num">6,631</td><td class="num up">+1,344</td><td class="num up">+25.4%</td><td class="num">1,241,710</td><td class="num">1,502,981</td><td class="num up">+261,271</td></tr>
+<tr class="subtotal"><td>TOTAL</td><td class="num">6,390</td><td class="num">7,734</td><td class="num up">+1,344</td><td class="num up">+21.0%</td><td class="num">1,247,565</td><td class="num">1,510,644</td><td class="num up">+263,079</td></tr>
+    </tbody></table>
+    <div class="takeaway-box"><b>Read:</b> Non-branded grew <b>+25.4% MoM (+1,344)</b> while branded held roughly flat — the content flywheel again. Non-branded now stands at <b>85.7% of all clicks</b>, up from 82.7% in July. Brand rows are measured on the full property (query-dim); non-brand is derived as total minus brand.</div>
+  </section>
+
+  <section>
+    <h2>Subfolder Performance (August vs July) — with AI Citation Coverage</h2>
+    <table class="t"><thead>
+      <tr><th>Subfolder</th><th class="num">July Clicks</th><th class="num">August Clicks</th><th class="num">Click Δ</th><th class="num">Δ %</th><th class="num">July Impr</th><th class="num">August Impr</th><th class="num aeo">Pages Cited · July</th><th class="num aeo">Pages Cited · August</th></tr>
+    </thead><tbody>
+      <tr><td>Blog</td><td class="num">2,805</td><td class="num">3,098</td><td class="num up">+293</td><td class="num up">+10.4%</td><td class="num">968,635</td><td class="num">1,166,460</td><td class="num aeo">71 <span style="color:var(--slate-5)">(5,830)</span></td><td class="num aeo">82 <span style="color:var(--slate-5)">(5,319)</span></td></tr>
+<tr><td>Homepage</td><td class="num">1,394</td><td class="num">1,431</td><td class="num up">+37</td><td class="num up">+2.7%</td><td class="num">44,932</td><td class="num">59,384</td><td class="num aeo">2 <span style="color:var(--slate-5)">(138)</span></td><td class="num aeo">2 <span style="color:var(--slate-5)">(491)</span></td></tr>
+<tr><td>Glossary</td><td class="num">1,690</td><td class="num">2,723</td><td class="num up">+1,033</td><td class="num up">+61.1%</td><td class="num">172,261</td><td class="num">219,576</td><td class="num aeo">1 <span style="color:var(--slate-5)">(28)</span></td><td class="num aeo">1 <span style="color:var(--slate-5)">(4)</span></td></tr>
+<tr><td>Solutions</td><td class="num">13</td><td class="num">12</td><td class="num down">-1</td><td class="num down">-7.7%</td><td class="num">9,757</td><td class="num">12,652</td><td class="num aeo">6 <span style="color:var(--slate-5)">(99)</span></td><td class="num aeo">9 <span style="color:var(--slate-5)">(78)</span></td></tr>
+<tr><td>Product</td><td class="num">68</td><td class="num">55</td><td class="num down">-13</td><td class="num down">-19.1%</td><td class="num">12,038</td><td class="num">14,967</td><td class="num aeo">7 <span style="color:var(--slate-5)">(806)</span></td><td class="num aeo">8 <span style="color:var(--slate-5)">(645)</span></td></tr>
+<tr><td>Pricing</td><td class="num">54</td><td class="num">46</td><td class="num down">-8</td><td class="num down">-14.8%</td><td class="num">4,624</td><td class="num">4,722</td><td class="num aeo">1 <span style="color:var(--slate-5)">(6)</span></td><td class="num aeo">1 <span style="color:var(--slate-5)">(14)</span></td></tr>
+<tr><td>Other (Company, Tools, etc.)</td><td class="num">366</td><td class="num">369</td><td class="num up">+3</td><td class="num up">+0.8%</td><td class="num">35,318</td><td class="num">32,883</td><td class="num aeo">48 <span style="color:var(--slate-5)">(878)</span></td><td class="num aeo">55 <span style="color:var(--slate-5)">(1,170)</span></td></tr>
+<tr class="subtotal"><td>TOTAL (gofreight.com)</td><td class="num">6,390</td><td class="num">7,734</td><td class="num up">+1,344</td><td class="num up">+21.0%</td><td class="num">1,247,565</td><td class="num">1,510,644</td><td class="num aeo">136 <span style="color:var(--slate-5)">(7,785)</span></td><td class="num aeo">158 <span style="color:var(--slate-5)">(7,721)</span></td></tr>
+    </tbody></table>
+    <p class="note">Totals reflect the primary gofreight.com property (support / api / archive subdomains excluded per the filter). <b>Pages Cited by AI</b> = distinct pages cited as a source by ChatGPT, Perplexity, or Google AI in WorkDuo-tracked responses that month, shown as <i>pages (total citations)</i>.</p>
+    <div class="takeaway-box"><b>Read:</b> <b>Glossary surged +61.1%</b> (clicks 1,690 → 2,723) on the terminal-tracking pages — the biggest driver again — and <b>Blog grew +10.4%</b> (2,805 → 3,098). The customer-portal blog and homepage jumped in AI citations. Product / Pricing / Solutions clicks eased slightly (small bases); the September Product-page work targets them.</div>
+  </section>
+
+  <section>
+    <h2>Top 30 Pages by Clicks (August vs July) — with AI Citations per Page</h2>
+    <table class="t"><thead>
+      <tr><th>#</th><th>Page</th><th>Recent Work</th><th class="num">July Clicks</th><th class="num">August Clicks</th><th class="num">Δ Clicks</th><th class="num">August Impr</th><th class="num aeo">AI Citations · July</th><th class="num aeo">AI Citations · August</th></tr>
+    </thead><tbody>
+      <tr><td class="num">1</td><td><a href="https://gofreight.com/" target="_blank">gofreight.com/ (homepage)</a></td><td></td><td class="num">1,394</td><td class="num">1,431</td><td class="num up">+37</td><td class="num">59,384</td><td class="num aeo">138</td><td class="num aeo">491</td></tr>
+<tr><td class="num">2</td><td><a href="https://gofreight.com/glossary/garden-city-terminal-tracking" target="_blank">/glossary/garden-city-terminal-tracking</a></td><td><span style="background:#e6f4f1;color:#0f766e;padding:1px 6px;border-radius:4px;font-size:11px;white-space:nowrap;font-weight:600">📈 NS · Mar</span></td><td class="num">537</td><td class="num">1,357</td><td class="num up">+820</td><td class="num">16,013</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">3</td><td><a href="https://gofreight.com/glossary/savannah-terminal-tracking" target="_blank">/glossary/savannah-terminal-tracking</a></td><td><span style="background:#e6f4f1;color:#0f766e;padding:1px 6px;border-radius:4px;font-size:11px;white-space:nowrap;font-weight:600">📈 NS · Mar</span></td><td class="num">379</td><td class="num">465</td><td class="num up">+86</td><td class="num">16,711</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">4</td><td><a href="https://gofreight.com/glossary/what-is-incoterms" target="_blank">/glossary/what-is-incoterms</a></td><td><span style="background:#e6f4f1;color:#0f766e;padding:1px 6px;border-radius:4px;font-size:11px;white-space:nowrap;font-weight:600">📈 NS · Jan</span></td><td class="num">280</td><td class="num">343</td><td class="num up">+63</td><td class="num">20,739</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">5</td><td><a href="https://gofreight.com/blog/freights-snap/global-top-freight-forwarders" target="_blank">/blog/freights-snap/global-top-freight-forwarders</a></td><td></td><td class="num">254</td><td class="num">249</td><td class="num down">-5</td><td class="num">30,389</td><td class="num aeo">2</td><td class="num aeo">1</td></tr>
+<tr><td class="num">6</td><td><a href="https://gofreight.com/blog/education/how-to-do-custom-clearance-in-usa-for-goods.html" target="_blank">/blog/education/how-to-do-custom-clearance-in-usa-for-goods</a></td><td></td><td class="num">312</td><td class="num">237</td><td class="num down">-75</td><td class="num">118,794</td><td class="num aeo">1</td><td class="num aeo">0</td></tr>
+<tr><td class="num">7</td><td><a href="https://gofreight.com/blog/education/top-freight-forwarding-training-courses" target="_blank">/blog/education/top-freight-forwarding-training-courses</a></td><td><span style="background:#e6f4f1;color:#0f766e;padding:1px 6px;border-radius:4px;font-size:11px;white-space:nowrap;font-weight:600">📈 NS · Jan</span></td><td class="num">196</td><td class="num">230</td><td class="num up">+34</td><td class="num">11,961</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">8</td><td><a href="https://gofreight.com/glossary/its-terminal-tracking" target="_blank">/glossary/its-terminal-tracking</a></td><td><span style="background:#e6f4f1;color:#0f766e;padding:1px 6px;border-radius:4px;font-size:11px;white-space:nowrap;font-weight:600">📈 NS · Mar</span></td><td class="num">183</td><td class="num">118</td><td class="num down">-65</td><td class="num">8,938</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">9</td><td><a href="https://gofreight.com/blog/industry-insights/mastering-fob-in-shipping-a-complete-guide.html" target="_blank">/blog/…/mastering-fob-in-shipping-a-complete-guide</a></td><td></td><td class="num">77</td><td class="num">112</td><td class="num up">+35</td><td class="num">73,327</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">10</td><td><a href="https://gofreight.com/blog/customs-clearance-timeline" target="_blank">/blog/customs-clearance-timeline</a></td><td><span style="background:#e6f4f1;color:#0f766e;padding:1px 6px;border-radius:4px;font-size:11px;white-space:nowrap;font-weight:600">📈 NS · Mar</span></td><td class="num">105</td><td class="num">108</td><td class="num up">+3</td><td class="num">22,777</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">11</td><td><a href="https://gofreight.com/blog/industry-insights/your-ultimate-guide-to-commercial-invoice-customs-costs.html" target="_blank">/blog/…/your-ultimate-guide-to-commercial-invoice-customs-co…</a></td><td></td><td class="num">43</td><td class="num">99</td><td class="num up">+56</td><td class="num">23,181</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">12</td><td><a href="https://gofreight.com/blog/education/unpacking-the-telex-release-in-shipping.html" target="_blank">/blog/education/unpacking-the-telex-release-in-shipping</a></td><td></td><td class="num">32</td><td class="num">97</td><td class="num up">+65</td><td class="num">22,919</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">13</td><td><a href="https://gofreight.com/blog/education/the-complete-guide-to-ddu-and-delivery-duty-unpaid.html" target="_blank">/blog/…/the-complete-guide-to-ddu-and-delivery-duty-unpaid</a></td><td><span style="background:#e6f4f1;color:#0f766e;padding:1px 6px;border-radius:4px;font-size:11px;white-space:nowrap;font-weight:600">📈 NS · Jan</span></td><td class="num">75</td><td class="num">95</td><td class="num up">+20</td><td class="num">32,926</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">14</td><td><a href="https://gofreight.com/blog/education/10-best-books-on-freight-forwarding-to-read.html" target="_blank">/blog/education/10-best-books-on-freight-forwarding-to-read</a></td><td></td><td class="num">87</td><td class="num">93</td><td class="num up">+6</td><td class="num">2,381</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">15</td><td><a href="https://gofreight.com/blog/education/shipping-container-dimensions-everything-you-need-to-know.html" target="_blank">/blog/…/shipping-container-dimensions-everything-you-need-to…</a></td><td><span style="background:#e6f4f1;color:#0f766e;padding:1px 6px;border-radius:4px;font-size:11px;white-space:nowrap;font-weight:600">📈 NS · Feb</span></td><td class="num">111</td><td class="num">86</td><td class="num down">-25</td><td class="num">83,903</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">16</td><td><a href="https://gofreight.com/blog/freights-snap/is-it-true-dsv-to-become-the-worlds-largest-forwarder.html" target="_blank">/blog/…/is-it-true-dsv-to-become-the-worlds-largest-forwarder</a></td><td></td><td class="num">44</td><td class="num">83</td><td class="num up">+39</td><td class="num">14,280</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">17</td><td><a href="https://gofreight.com/glossary/fenix-marine-terminal-tracking" target="_blank">/glossary/fenix-marine-terminal-tracking</a></td><td><span style="background:#e6f4f1;color:#0f766e;padding:1px 6px;border-radius:4px;font-size:11px;white-space:nowrap;font-weight:600">📈 NS · Mar</span></td><td class="num">90</td><td class="num">75</td><td class="num down">-15</td><td class="num">11,631</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">18</td><td><a href="https://gofreight.com/glossary/scfi" target="_blank">/glossary/scfi</a></td><td></td><td class="num">4</td><td class="num">69</td><td class="num up">+65</td><td class="num">13,676</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">19</td><td><a href="https://gofreight.com/blog/industry-insights/top-10-reasons-of-shipping-delays.html" target="_blank">/blog/industry-insights/top-10-reasons-of-shipping-delays</a></td><td></td><td class="num">96</td><td class="num">67</td><td class="num down">-29</td><td class="num">18,224</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">20</td><td><a href="https://gofreight.com/blog/education/what-is-the-profit-margin-for-freight-forwarders.html" target="_blank">/blog/…/what-is-the-profit-margin-for-freight-forwarders</a></td><td></td><td class="num">59</td><td class="num">63</td><td class="num up">+4</td><td class="num">8,258</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">21</td><td><a href="https://gofreight.com/blog/largest-ocean-carriers" target="_blank">/blog/largest-ocean-carriers</a></td><td></td><td class="num">30</td><td class="num">63</td><td class="num up">+33</td><td class="num">8,651</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">22</td><td><a href="https://gofreight.com/knowledge/check-bond-status-importer-bond-details-overview" target="_blank">/knowledge/check-bond-status-importer-bond-details-overview</a></td><td></td><td class="num">77</td><td class="num">63</td><td class="num down">-14</td><td class="num">1,304</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">23</td><td><a href="https://gofreight.com/blog/education/buyer-pays-freight-costs-unraveling-fca-incoterms" target="_blank">/blog/…/buyer-pays-freight-costs-unraveling-fca-incoterms</a></td><td></td><td class="num">61</td><td class="num">61</td><td class="num ">0</td><td class="num">36,307</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">24</td><td><a href="https://gofreight.com/blog/education/how-to-apply-for-nvocc-license.html" target="_blank">/blog/education/how-to-apply-for-nvocc-license</a></td><td></td><td class="num">85</td><td class="num">61</td><td class="num down">-24</td><td class="num">8,530</td><td class="num aeo">16</td><td class="num aeo">33</td></tr>
+<tr><td class="num">25</td><td><a href="https://gofreight.com/blog/customs-clearance-status-codes" target="_blank">/blog/customs-clearance-status-codes</a></td><td></td><td class="num">0</td><td class="num">54</td><td class="num up">+54</td><td class="num">6,218</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">26</td><td><a href="https://gofreight.com/blog/cargowise-pricing-2025" target="_blank">/blog/cargowise-pricing-2025</a></td><td><span style="background:#34aa97;color:#fff;padding:1px 6px;border-radius:4px;font-size:11px;white-space:nowrap;font-weight:600">🔄 Updated Jun</span></td><td class="num">39</td><td class="num">48</td><td class="num up">+9</td><td class="num">4,572</td><td class="num aeo">81</td><td class="num aeo">85</td></tr>
+<tr><td class="num">27</td><td><a href="https://gofreight.com/glossary/understanding-cpt-meaning-in-incoterms.html" target="_blank">/glossary/understanding-cpt-meaning-in-incoterms</a></td><td></td><td class="num">31</td><td class="num">47</td><td class="num up">+16</td><td class="num">34,904</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr><td class="num">28</td><td><a href="https://gofreight.com/pricing" target="_blank">/pricing</a></td><td></td><td class="num">54</td><td class="num">46</td><td class="num down">-8</td><td class="num">4,722</td><td class="num aeo">6</td><td class="num aeo">14</td></tr>
+<tr><td class="num">29</td><td><a href="https://gofreight.com/blog/general/what-is-freight-forwarding-and-how-does-it-work.html" target="_blank">/blog/general/what-is-freight-forwarding-and-how-does-it-work</a></td><td></td><td class="num">30</td><td class="num">45</td><td class="num up">+15</td><td class="num">22,072</td><td class="num aeo">143</td><td class="num aeo">39</td></tr>
+<tr><td class="num">30</td><td><a href="https://gofreight.com/glossary/understanding-cost-and-freight-cfr.html" target="_blank">/glossary/understanding-cost-and-freight-cfr</a></td><td></td><td class="num">15</td><td class="num">44</td><td class="num up">+29</td><td class="num">16,282</td><td class="num aeo">0</td><td class="num aeo">0</td></tr>
+<tr class="subtotal"><td colspan="3">SUBTOTAL (Top 30)</td><td class="num">4,780</td><td class="num">6,009</td><td class="num up">+1,229</td><td class="num">—</td><td class="num aeo">387</td><td class="num aeo">663</td></tr>
+    </tbody></table>
+    <p class="note"><b>Recent Work</b> tags carried forward from prior reports (historical NovaStacks work markers); August’s specific refreshed / new-article URLs are not individually tagged here. <b>AI Citations</b> = WorkDuo-tracked AI responses citing this page as a source in the month.</p>
+  </section>
+
+  <section>
+    <h2>Top 15 Most-Cited Pages by AI — A Different List Than the Click Winners</h2>
+    <table class="t"><thead>
+      <tr><th>#</th><th>Page</th><th class="num aeo">AI Citations · July</th><th class="num aeo">AI Citations · August</th><th class="num">Δ</th><th class="num">August Clicks</th><th class="num">In Click Top 30?</th></tr>
+    </thead><tbody>
+      <tr><td class="num">1</td><td><a href="https://gofreight.com/blog/gofreight-platform-overview" target="_blank">/blog/gofreight-platform-overview</a></td><td class="num aeo">743</td><td class="num aeo">579</td><td class="num down">-164</td><td class="num">28</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+<tr><td class="num">2</td><td><a href="https://gofreight.com/" target="_blank">gofreight.com/ (homepage)</a></td><td class="num aeo">138</td><td class="num aeo">491</td><td class="num up">+353</td><td class="num">1,431</td><td class="num" style="color:var(--slate-5)">yes</td></tr>
+<tr><td class="num">3</td><td><a href="https://gofreight.com/blog/best-tms-software" target="_blank">/blog/best-tms-software</a></td><td class="num aeo">551</td><td class="num aeo">478</td><td class="num down">-73</td><td class="num">30</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+<tr><td class="num">4</td><td><a href="https://gofreight.com/blog/cargowise-vs-gofreight" target="_blank">/blog/cargowise-vs-gofreight</a></td><td class="num aeo">626</td><td class="num aeo">445</td><td class="num down">-181</td><td class="num">12</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+<tr><td class="num">5</td><td><a href="https://gofreight.com/blog/best-freight-management-software" target="_blank">/blog/best-freight-management-software</a></td><td class="num aeo">587</td><td class="num aeo">373</td><td class="num down">-214</td><td class="num">29</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+<tr><td class="num">6</td><td><a href="https://gofreight.com/blog/nvocc-software-top-solutions" target="_blank">/blog/nvocc-software-top-solutions</a></td><td class="num aeo">317</td><td class="num aeo">321</td><td class="num up">+4</td><td class="num">11</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+<tr><td class="num">7</td><td><a href="https://gofreight.com/blog/cargowise-alternative" target="_blank">/blog/cargowise-alternative</a></td><td class="num aeo">385</td><td class="num aeo">320</td><td class="num down">-65</td><td class="num">23</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+<tr><td class="num">8</td><td><a href="https://gofreight.com/blog/solution/blog-customer-portal.html" target="_blank">/blog/solution/blog-customer-portal</a></td><td class="num aeo">96</td><td class="num aeo">280</td><td class="num up">+184</td><td class="num">6</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+<tr><td class="num">9</td><td><a href="https://gofreight.com/blog/gofreight-reviews-testimonials" target="_blank">/blog/gofreight-reviews-testimonials</a></td><td class="num aeo">316</td><td class="num aeo">248</td><td class="num down">-68</td><td class="num">5</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+<tr><td class="num">10</td><td><a href="https://gofreight.com/product/integrations" target="_blank">/product/integrations</a></td><td class="num aeo">387</td><td class="num aeo">232</td><td class="num down">-155</td><td class="num">6</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+<tr><td class="num">11</td><td><a href="https://gofreight.com/blog/gofreight-vs-magaya" target="_blank">/blog/gofreight-vs-magaya</a></td><td class="num aeo">369</td><td class="num aeo">217</td><td class="num down">-152</td><td class="num">4</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+<tr><td class="num">12</td><td><a href="https://gofreight.com/product/customer-portal" target="_blank">/product/customer-portal</a></td><td class="num aeo">93</td><td class="num aeo">168</td><td class="num up">+75</td><td class="num">14</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+<tr><td class="num">13</td><td><a href="https://gofreight.com/service-level-agreement" target="_blank">/service-level-agreement</a></td><td class="num aeo">202</td><td class="num aeo">133</td><td class="num down">-69</td><td class="num">1</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+<tr><td class="num">14</td><td><a href="https://developers.gofreight.com" target="_blank">developers.gofreight.com</a></td><td class="num aeo">36</td><td class="num aeo">131</td><td class="num up">+95</td><td class="num">0</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+<tr><td class="num">15</td><td><a href="https://gofreight.com/blog/freight-tracking-software-comparison" target="_blank">/blog/freight-tracking-software-comparison</a></td><td class="num aeo">153</td><td class="num aeo">129</td><td class="num down">-24</td><td class="num">12</td><td class="num" style="color:var(--slate-5)">—</td></tr>
+    </tbody></table>
+    <div class="takeaway-box"><b>Read: SEO winners and AEO winners are different pages.</b> Google clicks flow to educational long-tail content; AI engines answering buying-intent prompts cite the <b>commercial pages</b> — platform-overview, best-tms-software, cargowise-vs-gofreight, best-freight-management-software, /product/integrations, and the customer-portal page. Most of these barely register in a click-ranked view, which is why the report tracks both axes.</div>
+  </section>
+
+  <section>
+    <h2>Core Keyword Tracking — Commercial Cluster (GSC avg position by target page, United States market, August vs July)</h2>
+    <p class="note" style="margin-bottom:8px;"><b>Canonical static panel</b> — the full commercial-cluster set (11 terms), kept fixed month over month. Each keyword is tracked on the GoFreight page it actually ranks on (the page with the most US impressions for that query).</p>
+    <table class="t"><thead>
+      <tr><th>Core Keyword</th><th>Target Page</th><th class="num">August Impr (US)</th><th class="num">July Pos</th><th class="num">August Pos</th><th class="num">Δ Position</th><th>Note</th></tr>
+    </thead><tbody>
+      <tr class="win-row"><td><b>freight forwarding software</b></td><td><a href="https://gofreight.com/" target="_blank">gofreight.com/</a></td><td class="num">827</td><td class="num">2.5</td><td class="num">1.9</td><td class="num up">+0.6 ▲</td><td>Homepage, top 2 (improved)</td></tr>
+<tr class=""><td><b>freight management software</b></td><td><a href="https://gofreight.com/blog/best-freight-management-software" target="_blank">/blog/best-freight-management-software</a></td><td class="num">1,066</td><td class="num">1.8</td><td class="num">3.1</td><td class="num down">-1.3 ▼</td><td>Fms listicle, top 5 (softened)</td></tr>
+<tr class=""><td><b>freight management system</b></td><td><a href="https://gofreight.com/blog/best-freight-management-software" target="_blank">/blog/best-freight-management-software</a></td><td class="num">814</td><td class="num">3.8</td><td class="num">6.9</td><td class="num down">-3.1 ▼</td><td>Fms listicle, page 1 (softened)</td></tr>
+<tr class=""><td><b>freight management system software</b></td><td><a href="https://gofreight.com/blog/best-freight-management-software" target="_blank">/blog/best-freight-management-software</a></td><td class="num">305</td><td class="num">2.2</td><td class="num">5.4</td><td class="num down">-3.2 ▼</td><td>Fms listicle, page 1 (softened)</td></tr>
+<tr class=""><td><b>best freight forwarding software</b></td><td><a href="https://gofreight.com/" target="_blank">gofreight.com/</a></td><td class="num">195</td><td class="num">4.1</td><td class="num">5.8</td><td class="num down">-1.7 ▼</td><td>Homepage, page 1 (softened)</td></tr>
+<tr class=""><td><b>best freight management software</b></td><td><a href="https://gofreight.com/blog/best-freight-management-software" target="_blank">/blog/best-freight-management-software</a></td><td class="num">183</td><td class="num">4.4</td><td class="num">4.6</td><td class="num down">-0.2 ▼</td><td>Fms listicle, top 5 (held)</td></tr>
+<tr class="win-row"><td><b>air freight forwarding software</b></td><td><a href="https://gofreight.com/" target="_blank">gofreight.com/</a></td><td class="num">125</td><td class="num">5.3</td><td class="num">3.2</td><td class="num up">+2.1 ▲</td><td>Homepage, top 5 (improved)</td></tr>
+<tr class="win-row"><td><b>global freight management system</b></td><td><a href="https://gofreight.com/blog/best-freight-management-software" target="_blank">/blog/best-freight-management-software</a></td><td class="num">143</td><td class="num">11.2</td><td class="num">9.2</td><td class="num up">+2.0 ▲</td><td>Fms listicle, page 1 (improved)</td></tr>
+<tr class=""><td><b>ocean freight management software</b></td><td><a href="https://gofreight.com/blog/best-freight-management-software" target="_blank">/blog/best-freight-management-software</a></td><td class="num">426</td><td class="num">6.1</td><td class="num">8.5</td><td class="num down">-2.4 ▼</td><td>Fms listicle, page 1 (softened)</td></tr>
+<tr class=""><td><b>sea freight management software</b></td><td><a href="https://gofreight.com/blog/best-freight-management-software" target="_blank">/blog/best-freight-management-software</a></td><td class="num">100</td><td class="num">6.5</td><td class="num">9.3</td><td class="num down">-2.8 ▼</td><td>Fms listicle, page 1 (softened)</td></tr>
+<tr class=""><td><b>container freight management system</b></td><td><a href="https://gofreight.com/blog/best-freight-management-software" target="_blank">/blog/best-freight-management-software</a></td><td class="num">106</td><td class="num">4.4</td><td class="num">4.9</td><td class="num down">-0.5 ▼</td><td>Fms listicle, top 5 (softened)</td></tr>
+    </tbody></table>
+    <p class="note">United States market only (GSC country = usa), each keyword filtered to its best-ranking target page (query + page). Lower = better; “n/a” = no US impressions for that query that month.</p>
+    <div class="two-col" style="margin-top:10px;">
+      <div class="takeaway-box win"><b>✓ Wins on the target page (US)</b><ul><li><b>“logistics crm software”</b> 17.3 → 14.7 (+2.6)</li><li><b>“air freight forwarding software”</b> 5.3 → 3.2 (+2.1)</li><li><b>“global freight management system”</b> 11.2 → 9.2 (+2.0)</li><li><b>“freight forwarding software”</b> 2.5 → 1.9 (+0.6)</li></ul></div>
+      <div class="takeaway-box watch"><b>⚠ Watch (US, target page)</b><ul><li><b>“best tms software”</b> 10.0 → 13.8 (-3.8)</li><li><b>“freight management system software”</b> 2.2 → 5.4 (-3.2)</li><li><b>“freight management system”</b> 3.8 → 6.9 (-3.1)</li><li><b>“sea freight management software”</b> 6.5 → 9.3 (-2.8)</li></ul></div>
+    </div>
+    <div class="takeaway-box" style="margin-top:10px;background:#e6f4f1;">
+      <b>Panel note:</b> the canonical set = the 11 freight-management / forwarding-software cluster terms (tracked since April); the 6 CRM / TMS / tracking terms sit in the <b>Emerging Keywords</b> table below. Each term is tracked on its actual best-ranking page. <b>Do not drop terms from the panel — keep old + new every month.</b>
+    </div>
+    <h3 style="margin-top:16px;">Emerging Keywords (candidate terms — CRM / TMS / tracking)</h3>
+    <table class="t"><thead>
+      <tr><th>Emerging Keyword</th><th>Target Page</th><th class="num">August Impr (US)</th><th class="num">July Pos</th><th class="num">August Pos</th><th class="num">Δ Position</th><th>Note</th></tr>
+    </thead><tbody>
+      <tr class=""><td><b>freight forwarding crm</b></td><td><a href="https://gofreight.com/blog/best-logistics-crm-software" target="_blank">/blog/best-logistics-crm-software</a></td><td class="num">32</td><td class="num">3.3</td><td class="num">3.8</td><td class="num down">-0.5 ▼</td><td>Crm listicle, top 5 (softened)</td></tr>
+<tr class="win-row"><td><b>logistics crm software</b></td><td><a href="https://gofreight.com/blog/best-logistics-crm-software" target="_blank">/blog/best-logistics-crm-software</a></td><td class="num">184</td><td class="num">17.3</td><td class="num">14.7</td><td class="num up">+2.6 ▲</td><td>Crm listicle, page 2 (improved)</td></tr>
+<tr class=""><td><b>best tms software</b></td><td><a href="https://gofreight.com/blog/best-tms-software" target="_blank">/blog/best-tms-software</a></td><td class="num">300</td><td class="num">10.0</td><td class="num">13.8</td><td class="num down">-3.8 ▼</td><td>Tms article, page 2 (softened)</td></tr>
+<tr class="win-row"><td><b>freight forwarder software</b></td><td><a href="https://gofreight.com/" target="_blank">gofreight.com/</a></td><td class="num">383</td><td class="num">1.8</td><td class="num">1.6</td><td class="num up">+0.2 ▲</td><td>Homepage, top 2 (held)</td></tr>
+<tr class="win-row"><td><b>freight software</b></td><td><a href="https://gofreight.com/" target="_blank">gofreight.com/</a></td><td class="num">396</td><td class="num">1.7</td><td class="num">1.2</td><td class="num up">+0.5 ▲</td><td>Homepage, top 2 (improved)</td></tr>
+<tr class=""><td><b>freight tracking software</b></td><td><a href="https://gofreight.com/blog/freight-tracking-software-comparison" target="_blank">/blog/freight-tracking-software-comparison</a></td><td class="num">54</td><td class="num">7.3</td><td class="num">9.6</td><td class="num down">-2.3 ▼</td><td>Tracking page, page 1 (softened)</td></tr>
+    </tbody></table>
+    <p class="note">Tracked alongside the core panel; promote into the canonical set only with a noted change.</p>
+  </section>
+
+  <section>
+    <h2>AI Traffic Deep-Dive — The August Rebound</h2>
+    <p class="note" style="margin-bottom:8px;">AI-referred sessions rose from 392 (July) to 579 (August), <b>+47.7%</b>. This section isolates <b>which engines and which pages</b> drove the recovery.</p>
+    <div class="two-col" style="align-items:start;">
+      <div>
+        <table class="t"><thead>
+          <tr><th>AI Source</th><th class="num">July</th><th class="num">August</th><th class="num">Δ</th></tr>
+        </thead><tbody>
+          <tr class="win-row"><td><b>ChatGPT</b></td><td class="num">251</td><td class="num">394</td><td class="num up">+143</td></tr>
+<tr class="win-row"><td><b>Gemini</b></td><td class="num">69</td><td class="num">104</td><td class="num up">+35</td></tr>
+<tr class="win-row"><td><b>Claude</b></td><td class="num">42</td><td class="num">50</td><td class="num up">+8</td></tr>
+<tr class=""><td><b>Perplexity</b></td><td class="num">20</td><td class="num">19</td><td class="num down">-1</td></tr>
+<tr class="win-row"><td><b>Copilot</b></td><td class="num">8</td><td class="num">11</td><td class="num up">+3</td></tr>
+<tr class=""><td><b>Other AI</b></td><td class="num">1</td><td class="num">0</td><td class="num down">-1</td></tr>
+<tr class="subtotal"><td>TOTAL AI sessions</td><td class="num">391</td><td class="num">578</td><td class="num up">+187</td></tr>
+        </tbody></table>
+        <div class="takeaway-box win" style="margin-top:8px;"><b>ChatGPT recovered and led the rebound.</b> ChatGPT sessions climbed <b>251 → 394 (+143)</b>, reversing July’s dip and confirming that decline was a <b>temporary ChatGPT platform change, not a GoFreight loss</b>. Every other engine grew too — Gemini +35, Claude +8, Copilot +3 — so the recovery is broad-based, not a single-platform blip.</div>
+      </div>
+      <div>
+        <table class="t"><thead>
+          <tr><th>Landing pages that gained AI sessions</th><th class="num">July</th><th class="num">August</th><th class="num">Δ</th></tr>
+        </thead><tbody>
+          <tr class="win-row"><td><a href="https://gofreight.com/" target="_blank">/</a></td><td class="num">63</td><td class="num">110</td><td class="num up">+47</td></tr>
+<tr class="win-row"><td>(not set / unattributed)</td><td class="num">31</td><td class="num">49</td><td class="num up">+18</td></tr>
+<tr class="win-row"><td><a href="https://gofreight.com/pricing" target="_blank">/pricing</a></td><td class="num">8</td><td class="num">16</td><td class="num up">+8</td></tr>
+<tr class="win-row"><td><a href="https://gofreight.com/glossary/ocean-carrier-alliances" target="_blank">/glossary/ocean-carrier-alliances</a></td><td class="num">1</td><td class="num">9</td><td class="num up">+8</td></tr>
+<tr class="win-row"><td><a href="https://gofreight.com/product/rate-management-quoting" target="_blank">/product/rate-management-quoting</a></td><td class="num">4</td><td class="num">11</td><td class="num up">+7</td></tr>
+<tr class="win-row"><td><a href="https://gofreight.com/freight-forwarding-software" target="_blank">/freight-forwarding-software</a></td><td class="num">1</td><td class="num">8</td><td class="num up">+7</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <div class="takeaway-box win" style="margin-top:10px;"><b>The homepage led the recovery.</b> The gain is broad-based across pages, with the <b>homepage adding the most (+47 sessions, 63 → 110)</b> alongside pricing and glossary pages — the same broad, cross-page shape that fell in July now moving the other way. This is the clearest confirmation that July’s dip was a <b>platform-level referral change</b> and not a ranking or content problem on GoFreight’s side: when the platform behaviour normalised, the sessions came back across the whole site at once.</div>
+    <div class="takeaway-box win"><b>In plain terms — the AI dip is over.</b> In July, ChatGPT (the biggest AI referrer) briefly sent fewer visitors to every website while it changed how it built answers. In August that reversed:
+      <ul>
+        <li><b>ChatGPT visitors bounced back.</b> ChatGPT sent GoFreight <b>394 visitors in August, up from 251 in July</b> — more than fully recovering the July drop.</li>
+        <li><b>Every AI engine grew.</b> It was not just ChatGPT — Google’s Gemini, Claude and Microsoft Copilot all sent more visitors too, so GoFreight’s AI reach is widening across platforms.</li>
+        <li><b>The whole site benefited.</b> The extra AI visitors landed across the homepage, pricing and glossary pages — not one lucky article — which is exactly what a healthy, broad recovery looks like.</li>
+      </ul>
+      <b>Bottom line:</b> July’s AI-traffic dip was a temporary platform change, and August confirmed it — GoFreight’s AI referrals grew +47.7% and are now at their highest level of the year.</div>
+    <div class="takeaway-box win"><b>Newly published content is compounding the gain.</b> August’s 30 new articles and the refreshed glossary are already earning AI referrals across engines, so the content program is adding fresh AI reach on top of the platform recovery — the Glossary subfolder alone grew +61% in organic clicks this month.</div>
+  </section>
+
+  <section>
+    <h2>AEO Metrics — Month over Month</h2>
+    <table class="t"><thead>
+      <tr><th>Metric</th><th class="num">July 2026</th><th class="num">August 2026</th><th class="num">Change</th><th>Source</th></tr>
+    </thead><tbody>
+      <tr><td>AI Platform Sessions (GA4)</td><td class="num">392</td><td class="num">579</td><td class="num up">+47.7%</td><td>GA4 direct</td></tr>
+<tr><td>AI Visibility (non-brand)</td><td class="num">29.3%</td><td class="num">28.0%</td><td class="num down">-1.3 pts</td><td>WorkDuo</td></tr>
+<tr><td>GoFreight Pages Cited by AI (all properties)</td><td class="num">156</td><td class="num">186</td><td class="num up">+30</td><td>WorkDuo citations</td></tr>
+<tr><td>Total AI Citations of GoFreight Pages</td><td class="num">7,947</td><td class="num">8,163</td><td class="num up">+2.7%</td><td>WorkDuo citations</td></tr>
+    </tbody></table>
+    <p class="note">AI Platform Sessions from GA4 direct (property 373075091). AI Visibility (non-brand) from the WorkDuo API. Pages Cited / Total Citations recounted from the WorkDuo API (occurrence-count, 28-non-brand + 11-branded prompt panel, project cmhk59aw9001mlo33c3t8n3rj).</p>
+    <div class="takeaway-box win"><b>AEO performance: sessions rebounded and citations kept climbing.</b>
+      <ul>
+        <li><b>AI Platform Sessions grew +47.7%</b> (392 → 579, GA4 direct) — the July dip fully recovered, led by ChatGPT and supported by every other engine (deep-dive above).</li>
+        <li><b>AI citations grew +2.7%</b> (7,947 → 8,163 across all properties) on a wider page set (156 → 186 pages) — the comparison blogs and Product pages carry the load, and August’s new content is already being cited.</li>
+        <li><b>Non-brand AI visibility held at 28.0%</b> (29.3% → 28.0%, a shallow −1.3pp), while GoFreight stayed the most-cited freight-software vendor in the category.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    Sources: GSC (sc-domain:gofreight.com, date-dim for totals; page-dim for page/subfolder; page filter = gofreight.com, subdomains excluded; US-market core keywords filtered country=usa, per target page) · WorkDuo project cmhk59aw9001mlo33c3t8n3rj (28 non-brand prompts for visibility; all-prompt citations occurrence-recounted from /responses API) · GA4 property 373075091 (AI-referral sessions + source/landing-page analysis) · Generated 2026-09-09
+  </footer>
+</div>
+
+<script>
+const fmt = (n) => n===null?'n/a':n.toLocaleString();
+const weekLabels = ["Jan 5","Jan 12","Jan 19","Jan 26","Feb 2","Feb 9","Feb 16","Feb 23","Mar 2","Mar 9","Mar 16","Mar 23","Mar 30","Apr 6","Apr 13","Apr 20","Apr 27","May 4","May 11","May 18","May 25","Jun 1","Jun 8","Jun 15","Jun 22","Jun 29","Jul 6","Jul 13","Jul 20","Jul 27","Aug 3","Aug 10","Aug 17","Aug 24"];
+const clicks   = [459,496,672,816,909,967,940,1130,1102,1047,1047,1028,795,718,755,674,804,762,817,879,948,1104,1138,994,1172,993,1213,1487,1613,1680,1702,1684,1779,1980];
+const nbClicks = [175,218,417,544,664,730,728,825,806,750,782,748,533,449,456,441,524,468,564,630,717,824,800,747,909,780,971,1249,1342,1396,1452,1435,1529,1705];
+const chatGpt    = [8.33,5.71,7.14,5.71,9.29,10.71,10.0,15.0,17.14,17.14,13.57,15.71,15.0,13.57,17.86,14.29,13.57,14.29,16.43,12.14,27.14,18.9,12.8,9.2,14.8,21.4,20.4,23.0,17.9,20.4,15.8,25.5,26.0,33.7];
+const perplexity = [11.67,10.71,7.14,13.57,20.71,22.86,19.29,25.0,26.43,21.43,23.57,22.86,22.86,29.29,25.71,26.43,27.86,29.29,32.14,21.43,18.57,18.3,19.4,17.3,28.6,30.0,32.1,32.1,32.1,24.5,24.5,29.6,34.2,39.3];
+const googleAi   = [16.67,14.29,16.54,21.26,21.71,25.0,25.2,30.71,20.77,27.87,26.67,29.75,27.42,27.87,25.2,28.12,30.95,31.5,33.33,29.2,36.61,39.1,36.8,36.4,37.0,39.7,41.3,39.8,38.7,22.3,24.3,19.5,24.6,40.9];
+const aiSessions = [14,27,39,42,49,53,43,35,39,47,59,75,51,58,53,47,64,79,102,138,136,132,101,95,115,98,90,77,67,112,107,128,175,128];
+
+new Chart(document.getElementById('chart1'), { type:'line', data:{ labels:weekLabels, datasets:[
+  {label:'Total clicks', data:clicks, borderColor:'#94a3b8', backgroundColor:'rgba(148,163,184,0.08)', borderWidth:2, borderDash:[4,3], tension:0.25, fill:false, pointRadius:2, pointBackgroundColor:'#94a3b8'},
+  {label:'Non-brand clicks', data:nbClicks, borderColor:'#017d8e', backgroundColor:'rgba(1,125,142,0.12)', borderWidth:2.8, tension:0.25, fill:true, pointRadius:2.5, pointBackgroundColor:'#017d8e'}
+]}, options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:14,padding:6}}, tooltip:{callbacks:{label:(c)=>`${c.dataset.label}: ${fmt(c.parsed.y)}`}}}, scales:{y:{beginAtZero:true,ticks:{font:{size:10},callback:(v)=>v.toLocaleString()},grid:{color:'#f1f5f9'}}, x:{ticks:{font:{size:10},maxRotation:0,autoSkip:true,maxTicksLimit:8},grid:{display:false}}}}});
+
+new Chart(document.getElementById('chart2'), { type:'line', data:{ labels:weekLabels, datasets:[
+  {label:'Google AI Overview', data:googleAi, borderColor:'#0891b2', backgroundColor:'rgba(8,145,178,0.08)', borderWidth:2.2, tension:0.3, pointRadius:1.8},
+  {label:'Perplexity', data:perplexity, borderColor:'#16a34a', backgroundColor:'rgba(22,163,74,0.08)', borderWidth:2.2, tension:0.3, pointRadius:1.8},
+  {label:'ChatGPT', data:chatGpt, borderColor:'#d97706', backgroundColor:'rgba(217,119,6,0.08)', borderWidth:2.2, tension:0.3, pointRadius:1.8}
+]}, options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10,padding:6}}, tooltip:{callbacks:{label:(c)=>`${c.dataset.label}: ${c.parsed.y.toFixed(1)}%`}}}, scales:{y:{beginAtZero:true,max:45,ticks:{font:{size:10},callback:(v)=>v+'%'},grid:{color:'#f1f5f9'}}, x:{ticks:{font:{size:10},maxRotation:0,autoSkip:true,maxTicksLimit:8},grid:{display:false}}}}});
+
+new Chart(document.getElementById('chart3'), { type:'line', data:{ labels:weekLabels, datasets:[
+  {label:'AI sessions', data:aiSessions, borderColor:'#7c3aed', backgroundColor:'rgba(124,58,237,0.15)', borderWidth:2.5, tension:0.3, fill:true, pointRadius:2.5, pointBackgroundColor:'#7c3aed', spanGaps:false}
+]}, options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}, tooltip:{callbacks:{label:(c)=>`${c.parsed.y} AI sessions`}}}, scales:{y:{beginAtZero:true,suggestedMax:150,ticks:{stepSize:25,font:{size:10}},grid:{color:'#f1f5f9'}}, x:{ticks:{font:{size:10},maxRotation:0,autoSkip:true,maxTicksLimit:8},grid:{display:false}}}}});
+</script>
+</body>
+</html>
